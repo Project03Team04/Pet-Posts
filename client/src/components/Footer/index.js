@@ -12,10 +12,10 @@ const Footer = () => {
             className="btn btn-dark mb-3"
             onClick={() => navigate(-1)}
           >
-            &larr; Go Back
+             Go Back
           </button>
         )}
-        <h4>
+        <h6>
           Made with{' '}
           <span
             className="emoji"
@@ -26,7 +26,7 @@ const Footer = () => {
             ❤️
           </span>{' '}
           by the Pet Posts team.
-        </h4>
+        </h6>
       </div>
     </footer>
   );
