@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const postSchema = new Schema({
+const postSchema = new mongoose.Schema({
   postText: {
     type: String,
     required: 'You need to leave some text!',
@@ -18,6 +18,11 @@ const postSchema = new Schema({
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
+  },
+  //addition of filed to store the number of likes
+  likes: {
+    type: Number,
+    default: 0,
   },
   comments: [
     {
@@ -40,6 +45,6 @@ const postSchema = new Schema({
   ],
 });
 
-const Post = model('Post', postSchema);
+const Post = mongoose.model('Post', postSchema);
 
 module.exports = Post;
