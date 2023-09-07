@@ -18,7 +18,19 @@ const SinglePost = () => {
     variables: { postId: postId },
   });
 
-  const post = data?.post || {};
+  const [post, setPost] = data?.post || {};
+  const [isLiked, setIsLiked] = false;
+
+  const handleLike = async () => {
+    try {
+      const response = await post(`/api/posts/like/${post._id}`);
+      const updatedLikes = response.data.likes;
+      setPost({ ...post, likes: updatedLikes });
+      setIsLiked(!isLiked);
+    } catch (error) {
+      console.error('Error liking/unliking post:', error);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -50,6 +62,12 @@ const SinglePost = () => {
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <CommentForm postId={post._id} />
+      </div>
+      <div>
+        <button onClick={handleLike}>
+          {isLiked ? 'Unlike' : 'Like'}
+        </button>
+        <span>{post.likes} Likes</span>
       </div>
     </div>
   );
