@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const postSchema = new mongoose.Schema({
+const postSchema = new Schema({
   postText: {
     type: String,
     required: 'You need to leave some text!',
@@ -45,6 +45,6 @@ const postSchema = new mongoose.Schema({
   ],
 });
 
-const Post = mongoose.model('Post', postSchema);
+const Post = model('Post', postSchema);
 
 module.exports = Post;
