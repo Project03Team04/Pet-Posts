@@ -11,7 +11,10 @@ import {IconContext} from 'react-icons';
 const Sidebar = () => {
   const [sidebar, setSidebar]=useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-  
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <>
     <IconContext.Provider value={{color: "black"}}>
@@ -41,8 +44,35 @@ const Sidebar = () => {
                 </li>
             )
           })}
+          <li>
+            <div>
+          {Auth.loggedIn() ? (
+            <>
+              <Link className="btn" to="/me">
+                {Auth.getProfile().data.username}'s profile
+              </Link>
+              <button className="btn-sidebar" onClick={logout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link className="btn-sidebar" to="/login">
+                Login
+              </Link>
+              <Link className="btn-sidebar " to="/signup">
+                Signup
+              </Link>
+            </>
+          )}
+        </div>
+          </li>
         </ul>
+
+        
       </nav>
+      
+      
       </IconContext.Provider>
     </>
   );

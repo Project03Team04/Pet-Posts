@@ -17,13 +17,21 @@ header .top {
     margin-left: 1em;
     align-items: center;
 }
- h1 {
+header .header-img a{
+    height: 50px;
+    width: 50px;
+}
+header h1.title-lg {
     font-family: 'Baloo Da 2', cursive;
-    color: #f7db07;
+    color: #FFC727;
     font-size: 2.5em;
     
     margin-top: 1em;
     margin-bottom: 0;
+ }
+ header h1.title-sm {
+    visibility: hidden;
+    height: 0;
  }
 header .title {
     text-decoration: none;
@@ -31,7 +39,7 @@ header .title {
 }
 header p{
     font-family: 'Baloo Da 2', cursive;
-    color: #f7db07;
+    color: #FFC727;
     font-size: 1em;
     
 }
@@ -48,7 +56,7 @@ header p{
     color: black;
     font-family:'Baloo Da 2', cursive ;
 }
-.btn:hover {
+.btn-main:hover {
     background-color:  #f7db07;
 }
 .navbar{
@@ -65,7 +73,7 @@ header p{
 }
 
 .nav-menu {
-    background-color: #f7db07;
+    background-color: #FFE192;
     width:250px;
     height: 100vh;
     display: flex;
@@ -112,7 +120,7 @@ transition: 350ms;
     
 }
 .navbar-toggle{
-    background-color: #f7db07;
+    background-color: #FFE192;
     width: 100%;
     height:80px;
     display: flex;
@@ -122,4 +130,56 @@ transition: 350ms;
 span{
     margin-left: 16px;
     font-family: 'Baloo Da 2', cursive;
+}
+.btn-sidebar{
+    height: 0;
+        width:0;
+       visibility: hidden;
+
+}
+@media screen and (max-width: 640px){
+    header{
+        height: 6em;
+        
+    }
+    
+    header h1.title-sm{
+    font-family: 'Baloo Da 2', cursive;
+    color:#FFC727;
+    font-size: 2.5em;
+    visibility: visible;
+    margin-top: 0;
+    margin-bottom: 1em;
+    }
+    header h1.title-lg {
+      height: 0;
+       visibility: hidden;
+     }
+
+    
+     header p{
+        visibility: hidden;  
+    }
+    .btn-main{
+        height: 0;
+        width:0;
+       visibility: hidden;
+
+    }
+    .btn-sidebar{
+    width: 10%;
+    height: 10%;
+    background-color: white;
+    padding: 0.5em 1em;
+    visibility: visible;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    margin:1em;
+    text-decoration: none;
+    color: black;
+    font-family:'Baloo Da 2', cursive ;
+}
+.btn-sidebar:hover {
+    background-color:  #FFE192;
+}
 }
