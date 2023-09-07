@@ -27,16 +27,16 @@ const Header = () => {
               <Link className="btn" to="/me">
                 {Auth.getProfile().data.username}'s profile
               </Link>
-              <button className="btn-main" onClick={logout}>
+              <button className="btn-main  btn-block  " onClick={logout}>
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link className="btn-main" to="/login">
+              <Link className="btn-block btn-main" to="/login">
                 Login
               </Link>
-              <Link className="btn-main " to="/signup">
+              <Link className="btn-block btn-main " to="/signup">
                 Signup
               </Link>
             </>

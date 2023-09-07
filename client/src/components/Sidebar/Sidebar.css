@@ -6,9 +6,11 @@ header{
     justify-content: space-between;
     width:100%;
     padding: 1em;
+    padding-bottom: 2em;
     
     
 }
+
 header .top {
     display: flex;
     flex-direction: row;
@@ -21,6 +23,9 @@ header .header-img a{
     height: 50px;
     width: 50px;
 }
+
+    
+
 header h1.title-lg {
     font-family: 'Baloo Da 2', cursive;
     color: #FFC727;
@@ -43,22 +48,7 @@ header p{
     font-size: 1em;
     
 }
-.btn-main{
-    width: 10%;
-    height: 10%;
-    background-color: white;
-    padding: 0.5em 1em;
 
-    border: 1px solid black;
-    border-radius: 0.5em;
-    margin:1em;
-    text-decoration: none;
-    color: black;
-    font-family:'Baloo Da 2', cursive ;
-}
-.btn-main:hover {
-    background-color:  #f7db07;
-}
 .navbar{
     background-color:white;
     height: 100px;
@@ -98,6 +88,7 @@ transition: 350ms;
     list-style: none;
     height: 2em;
     font-family: 'Baloo Da 2', cursive;
+    margin: 1em;
 }
 .nav-text a{
     text-decoration: none;
@@ -107,12 +98,13 @@ transition: 350ms;
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 0.5em;
-    border-radius: 0.25em;
+    padding: 0;
+    border-radius: 0.4em;
     
 }
 .nav-text :hover {
     background-color: rgb(253, 157, 4);
+
 }
 
 .nav-menu-items {
@@ -128,13 +120,14 @@ transition: 350ms;
     align-items: center;
 }
 span{
-    margin-left: 16px;
+    margin-left: 0.2em;
     font-family: 'Baloo Da 2', cursive;
 }
+
 .btn-sidebar{
     height: 0;
-        width:0;
-       visibility: hidden;
+    width:0;
+    visibility: hidden;
 
 }
 @media screen and (max-width: 640px){
@@ -160,14 +153,9 @@ span{
      header p{
         visibility: hidden;  
     }
-    .btn-main{
-        height: 0;
-        width:0;
-       visibility: hidden;
-
-    }
+   
     .btn-sidebar{
-    width: 10%;
+    width: 60%;
     height: 10%;
     background-color: white;
     padding: 0.5em 1em;
@@ -178,6 +166,7 @@ span{
     text-decoration: none;
     color: black;
     font-family:'Baloo Da 2', cursive ;
+    margin-left: 2.5em;
 }
 .btn-sidebar:hover {
     background-color:  #FFE192;
