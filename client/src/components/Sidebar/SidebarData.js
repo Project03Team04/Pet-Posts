@@ -20,7 +20,7 @@ export const SidebarData=[
     },
     {
         title: 'Profile',
-        path: '/profile',
+        path: '/me',
         icon: < FaIcons.FaUser />,
         cName: 'nav-text'
 
