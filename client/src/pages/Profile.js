@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import PostForm from '../components/PostForm';
 import PostList from '../components/PostList';
+import ProfileEdit from './ProfileEdit';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
+
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -17,7 +19,14 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
+
+  const [editMode, setEditMode] = useState(false);
+
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+  };
+
+  // navigate to your own profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
   }
@@ -42,13 +51,24 @@ const Profile = () => {
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
+        {userParam || user.username === Auth.getProfile().data.username ? (
+  <div className="col-12 col-md-10 mb-3">
+    <button onClick={toggleEditMode}>Edit Profile</button>
+  </div>
+) : null}
+
         <div className="col-12 col-md-10 mb-5">
-          <PostList
-            posts={user.posts}
-            title={`${user.username}'s posts...`}
-            showTitle={false}
-            showUsername={false}
-          />
+          {/* Render the ProfileEdit component when in edit mode */}
+          {editMode ? (
+            <ProfileEdit user={user} />
+          ) : (
+            <PostList
+              posts={user.posts}
+              title={`${user.username}'s posts...`}
+              showTitle={false}
+              showUsername={false}
+            />
+          )}
         </div>
         {!userParam && (
           <div

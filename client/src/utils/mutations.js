@@ -54,3 +54,14 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const EDIT_USER_PROFILE = gql`
+  mutation editUserProfile($input: UserProfileInput!) {
+    editUserProfile(input: $input) {
+      username
+      email
+      bio
+      # Add other profile fields here
+    }
+  }
+`;
