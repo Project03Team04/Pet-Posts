@@ -114,7 +114,30 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    editUserProfile: async (parent, { username, email, bio }, context) => {
+      console.log("hello"); 
+      if (context.user) {
+        const userId = context.user._id;
+        
+  try {
+          
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: userId },
+            { $set: { username: username, email: email, bio: bio } },
+            { new: true }
+          );
+  
+          return updatedUser;
+        } catch (error) {
+          throw new Error('Error updating user profile');
+        }
+      } else {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+    },
   },
+  
 };
 
 module.exports = resolvers;

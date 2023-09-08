@@ -56,12 +56,12 @@ export const ADD_COMMENT = gql`
 `;
 
 export const EDIT_USER_PROFILE = gql`
-  mutation editUserProfile($input: UserProfileInput!) {
-    editUserProfile(input: $input) {
+  mutation editUserProfile( $username: String!, $email: String!, $bio: String!) {
+    editUserProfile( username: $username, email: $email, bio: $bio) {
+      _id
       username
       email
       bio
-      # Add other profile fields here
     }
   }
 `;
