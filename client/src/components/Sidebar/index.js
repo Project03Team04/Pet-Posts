@@ -17,7 +17,7 @@ const Sidebar = () => {
   };
   return (
     <>
-    <IconContext.Provider value={{color: "black"}}>
+    <IconContext.Provider value={{color: "gray"}}>
       <div >
         <div className="navbar">
         <Link to="#" className="menu-bars">
@@ -37,6 +37,9 @@ const Sidebar = () => {
           </li >  
           {Auth.loggedIn() ? (
           <>
+            <li className="greetings text-gray m-2"> 
+ <h3>Welcome, {Auth.getProfile().data.username} </h3>
+            </li>
             {SidebarData.map((item, index) => {
                return(
                 <li key={index} className={item.cName}  >
@@ -49,9 +52,7 @@ const Sidebar = () => {
             <li>
               <div className='login-sidebar flex-column'>
                      
-                <Link className="btn-block" to="/me">
-                  {Auth.getProfile().data.username}'s profile
-                 </Link>
+                
                 <button className="btn-block btn-sidebar" onClick={logout}>
                   Logout
                 </button>
