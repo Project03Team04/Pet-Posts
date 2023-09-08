@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState } from 'react';
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
@@ -18,8 +19,8 @@ const SinglePost = () => {
     variables: { postId: postId },
   });
 
-  const [post, setPost] = data?.post || {};
-  const [isLiked, setIsLiked] = false;
+  const [post, setPost] = useState(data?.post || {});
+  const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = async () => {
     try {
@@ -35,6 +36,12 @@ const SinglePost = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  if (!data?.post) {
+    return <div>Post not found</div>;
+  }
+
+
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
@@ -62,13 +69,22 @@ const SinglePost = () => {
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <CommentForm postId={post._id} />
-      </div>
-      <div>
-        <button onClick={handleLike}>
-          {isLiked ? 'Unlike' : 'Like'}
+        <div>
+        <button
+          style={{
+            backgroundColor: isLiked ? '#ff0000' : '#007bff', // Change colors as needed
+            color: '#fff', // Change text color as needed
+            border: 'none',
+            padding: '10px 20px', // Adjust padding as needed
+            cursor: 'pointer',}}
+            onClick={handleLike}>
+           {isLiked ? 'Unlike' : 'Like'}
         </button>
-        <span>{post.likes} Likes</span>
+
+        <span>{post.likes}</span>
       </div>
+      </div>
+
     </div>
   );
 };
