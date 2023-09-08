@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 import Sidebar from "../Sidebar";
+import HeaderImage from '../HeaderImage';
+
 
 const Header = () => {
   const logout = (event) => {
@@ -20,6 +22,9 @@ const Header = () => {
             <h1 className="title-sm">Pp</h1>
           </Link>
           <p className="">where pets can post </p>
+        </div>
+        <div>
+          <HeaderImage/>
         </div>
         <div>
           {Auth.loggedIn() ? (
