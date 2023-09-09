@@ -1,13 +1,16 @@
 // import React from 'react';
 import React, { useState } from 'react';
+// import API function 
+// import {likeOrUnlikePost} from '../components/api'; 
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
+import {LIKE_POST} from '../utils/mutations';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 
 const SinglePost = () => {
@@ -22,15 +25,18 @@ const SinglePost = () => {
   const [post, setPost] = useState(data?.post || {});
   const [isLiked, setIsLiked] = useState(false);
 
+  const [likePost, {error}]  = useMutation(LIKE_POST);
   const handleLike = async () => {
     try {
-      const response = await post(`/api/posts/like/${post._id}`);
-      const updatedLikes = response.data.likes;
-      setPost({ ...post, likes: updatedLikes });
+      const { data } = await likePost({
+        variables: { postId: postId },
+      });
+      setPost(data.likePost);
       setIsLiked(!isLiked);
     } catch (error) {
       console.error('Error liking/unliking post:', error);
     }
+    console.log("hello")
   };
 
   if (loading) {
@@ -72,13 +78,13 @@ const SinglePost = () => {
         <div>
         <button
           style={{
-            backgroundColor: isLiked ? '#ff0000' : '#007bff', // Change colors as needed
+            backgroundColor: post.likes > 0 ? '#ff0000' : '#007bff', // Change colors as needed
             color: '#fff', // Change text color as needed
             border: 'none',
             padding: '10px 20px', // Adjust padding as needed
             cursor: 'pointer',}}
             onClick={handleLike}>
-           {isLiked ? 'Unlike' : 'Like'}
+           {post.likes > 0 ? 'Unlike' : 'Like'}
         </button>
 
         <span>{post.likes}</span>

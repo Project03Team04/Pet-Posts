@@ -22,6 +22,7 @@ export const QUERY_POSTS = gql`
       postText
       postAuthor
       createdAt
+      likes
     }
   }
 `;
