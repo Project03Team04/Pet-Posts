@@ -5,12 +5,13 @@ import React, { useState } from 'react';
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
+// import { useMutation } from '@apollo/client'; if want to add button in single post page
+import { useQuery } from '@apollo/client';
 
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
-import {LIKE_POST} from '../utils/mutations';
+// import {LIKE_POST} from '../utils/mutations';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 
 const SinglePost = () => {
@@ -25,19 +26,19 @@ const SinglePost = () => {
   const [post, setPost] = useState(data?.post || {});
   const [isLiked, setIsLiked] = useState(false);
 
-  const [likePost, {error}]  = useMutation(LIKE_POST);
-  const handleLike = async () => {
-    try {
-      const { data } = await likePost({
-        variables: { postId: postId },
-      });
-      setPost(data.likePost);
-      setIsLiked(!isLiked);
-    } catch (error) {
-      console.error('Error liking post:', error);
-    }
-    console.log("hello")
-  };
+  // const [likePost, {error}]  = useMutation(LIKE_POST);
+  // const handleLike = async () => {
+  //   try {
+  //     const { data } = await likePost({
+  //       variables: { postId: postId },
+  //     });
+  //     setPost(data.likePost);
+  //     setIsLiked(!isLiked);
+  //   } catch (error) {
+  //     console.error('Error liking post:', error);
+  //   }
+  //   console.log("hello")
+  // };
 
   if (loading) {
     return <div>Loading...</div>;
