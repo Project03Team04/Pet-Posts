@@ -63,13 +63,13 @@ const PostList = ({
             </Link>
             <button
           style={{
-            backgroundColor: post.likes > 0 ? '#ff0000' : '#007bff', // Change colors as needed
-            color: '#fff', // Change text color as needed
+            backgroundColor: post.likes > 0 ? '#7393B3' : '#7393B3', //Only like button can make a diff button for unlike functionality 
+            color: '#fff', //styling will change 
             border: 'none',
-            padding: '10px 20px', // Adjust padding as needed
+            padding: '10px 20px', 
             cursor: 'pointer',}}
             onClick={() => handleLike(post._id)}>
-           {post.likes > 0 ? 'Unlike' : 'Like'}
+           {post.likes > 0 ? 'Like' : 'Like'}
         </button>
         <span>{post.likes}</span>
           </div>

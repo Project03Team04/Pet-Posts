@@ -76,7 +76,7 @@ const SinglePost = () => {
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <CommentForm postId={post._id} />
         <div>
-        <button
+        {/* <button
           style={{
             backgroundColor: post.likes > 0 ? '#ff0000' : '#007bff', // Change colors as needed
             color: '#fff', // Change text color as needed
@@ -85,9 +85,9 @@ const SinglePost = () => {
             cursor: 'pointer',}}
             onClick={handleLike}>
            {post.likes > 0 ? 'Unlike' : 'Like'}
-        </button>
-
-        <span>{post.likes}</span>
+        </button> */}
+        {/* NO NEED FOR LIKE BUTTON IN SINGLE POST PAGE */}
+        {/* <span>{post.likes}</span> */}
       </div>
       </div>
 

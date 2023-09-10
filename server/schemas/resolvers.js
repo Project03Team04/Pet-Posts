@@ -66,7 +66,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     likePost: async (parent, { postId }, context) => {
-      // if (context.user) {
+      if (context.user) {
         return Post.findOneAndUpdate(
           { _id: postId },
           {
@@ -77,7 +77,7 @@ const resolvers = {
             runValidators: true,
           }
         );
-      // }
+      }
     },
 
     addComment: async (parent, { postId, commentText }, context) => {
