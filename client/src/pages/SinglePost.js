@@ -34,7 +34,7 @@ const SinglePost = () => {
       setPost(data.likePost);
       setIsLiked(!isLiked);
     } catch (error) {
-      console.error('Error liking/unliking post:', error);
+      console.error('Error liking post:', error);
     }
     console.log("hello")
   };
