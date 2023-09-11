@@ -12,6 +12,7 @@ const typeDefs = gql`
   type Post {
     _id: ID
     postText: String
+    postImage: String
     postAuthor: String
     createdAt: String
     comments: [Comment]!

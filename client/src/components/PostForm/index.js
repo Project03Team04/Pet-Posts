@@ -9,7 +9,7 @@ import Auth from '../../utils/auth';
 
 const PostForm = () => {
   const [postText, setPostText] = useState('');
-
+  const [postImage, setPostImage] = useState();
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -41,6 +41,7 @@ const PostForm = () => {
       const { data } = await addPost({
         variables: {
           postText,
+          postImage: '',
           postAuthor: Auth.getProfile().data.username,
         },
       });
@@ -60,6 +61,27 @@ const PostForm = () => {
     }
   };
 
+  const handleImageSelect = (event) => {
+  setPostImage(event.target.files[0])
+  console.log(postImage);
+ }
+
+ const handleUpload = async (event) => {
+  const {url} = await fetch("/s3Url").then(res => res.json())
+      console.log(url);
+
+ /*  await fetch({
+    method: 'PUT',
+    headers: {
+      "Content-Type": 'multipart/form-data'
+    },
+    body: postImage
+  })
+
+  const imageUrl = url.split('?')[0]
+  console.log(imageUrl); */
+ }
+
   return (
     <div >
       <h3>What's on your pet mind?</h3>
@@ -73,6 +95,7 @@ const PostForm = () => {
           >
             Character Count: {characterCount}/280
           </p>
+          <input type='file' id='postImage' onChange={handleImageSelect}></input><button type='submit' onClick={handleUpload}>Submit</button>
           <form className="post-form"
             onSubmit={handleFormSubmit}>
             <div className="post-form-body">
@@ -85,7 +108,7 @@ const PostForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
-
+            
             <div className="post-form-footer display-flex justify-center">
               <button className="btn-post btn text-white m-2" type="submit">
                 Add Post
