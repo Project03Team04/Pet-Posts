@@ -53,7 +53,7 @@ const Profile = () => {
 
         {userParam || user.username === Auth.getProfile().data.username ? (
   <div className="">
-    <button onClick={toggleEditMode}>Edit Profile</button>
+    <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
   </div>
 ) : null}
 
