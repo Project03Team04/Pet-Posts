@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-
+import axios from 'axios'
 import { ADD_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
@@ -9,6 +9,7 @@ import Auth from '../../utils/auth';
 
 const PostForm = () => {
   const [postText, setPostText] = useState('');
+  const [postImage, setPostImage] = useState();
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -35,12 +36,31 @@ const PostForm = () => {
   });
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
+    const formData = await new FormData()
+    formData.append('file', postImage)
+    console.log("here!", formData);
+    
+    let post; 
+    try { 
+      post = await axios.post('/upload', formData)
+      console.log(post);
+    } catch (err) {
+      console.log(err);
+    }
+    /* const get = await axios.get('/upload', {
+      params: {
+        originalName: postImage.name
+      }
+    })
+    .then(function (response) {
+      console.log("res", response);
+    }) */
 
     try {
       const { data } = await addPost({
         variables: {
           postText,
+          postImage,
           postAuthor: Auth.getProfile().data.username,
         },
       });
@@ -50,6 +70,12 @@ const PostForm = () => {
       console.error(err);
     }
   };
+
+ const handleImageSelect = (event) => {
+  setPostImage(event.target.files[0])
+  console.log(postImage);
+ }
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -87,7 +113,7 @@ const PostForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
-
+            <input type='file' name='image' onChange={handleImageSelect}></input>
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
                 Add Post

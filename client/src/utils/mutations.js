@@ -29,6 +29,7 @@ export const ADD_POST = gql`
     addPost(postText: $postText) {
       _id
       postText
+      postImage
       postAuthor
       createdAt
       comments {
@@ -44,6 +45,7 @@ export const ADD_COMMENT = gql`
     addComment(postId: $postId, commentText: $commentText) {
       _id
       postText
+      postImage
       postAuthor
       createdAt
       comments {
