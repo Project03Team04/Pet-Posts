@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
@@ -9,8 +9,10 @@ import Auth from '../../utils/auth';
 
 const PostForm = () => {
   const [postText, setPostText] = useState('');
-  const [postImage, setPostImage] = useState();
+  const [postImage, setPostImage] = useState(null);
+  const fileSelectorRef = useRef(null)
   const [characterCount, setCharacterCount] = useState(0);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState('')
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
@@ -36,16 +38,17 @@ const PostForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    const imageUrl = postImage ? await handleUpload() : ""
+    console.log("try this", imageUrl);
     try {
       const { data } = await addPost({
         variables: {
           postText,
-          postImage: '',
+          postImage: imageUrl,
           postAuthor: Auth.getProfile().data.username,
         },
       });
-
+      
       setPostText('');
     } catch (err) {
       console.error(err);
@@ -64,13 +67,13 @@ const PostForm = () => {
   const handleImageSelect = (event) => {
   setPostImage(event.target.files[0])
   console.log(postImage);
+  
  }
 
- const handleUpload = async (event) => {
+ const handleUpload = async () => {
   const {url} = await fetch("/s3Url").then(res => res.json())
-      console.log(url);
 
- /*  await fetch({
+  await fetch(url, {
     method: 'PUT',
     headers: {
       "Content-Type": 'multipart/form-data'
@@ -79,7 +82,12 @@ const PostForm = () => {
   })
 
   const imageUrl = url.split('?')[0]
-  console.log(imageUrl); */
+  console.log("this is the url", imageUrl);
+
+  setUploadedImageUrl(imageUrl)
+  setPostImage(null)
+  fileSelectorRef.current.value = null
+  return imageUrl
  }
 
   return (
@@ -95,7 +103,7 @@ const PostForm = () => {
           >
             Character Count: {characterCount}/280
           </p>
-          <input type='file' id='postImage' onChange={handleImageSelect}></input><button type='submit' onClick={handleUpload}>Submit</button>
+          <input type='file' id='postImage' ref={fileSelectorRef} onChange={handleImageSelect}></input><button type='submit' onClick={handleUpload}>Submit</button>
           <form className="post-form"
             onSubmit={handleFormSubmit}>
             <div className="post-form-body">
@@ -110,7 +118,7 @@ const PostForm = () => {
             </div>
             
             <div className="post-form-footer display-flex justify-center">
-              <button className="btn-post btn text-white m-2" type="submit">
+              <button className="btn-post btn text-white m-2" type="submit" onClick={handleUpload}>
                 Add Post
               </button>
             </div>
@@ -120,6 +128,8 @@ const PostForm = () => {
               </div>
             )}
           </form>
+
+          {uploadedImageUrl && <img src={uploadedImageUrl}></img>}
         </>
       ) : (
         <p>
@@ -132,3 +142,5 @@ const PostForm = () => {
 };
 
 export default PostForm;
+
+
