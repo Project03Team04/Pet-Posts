@@ -1,36 +1,40 @@
-import React from 'react';
+import React from "react";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ReactSwitch from 'react-switch';
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import SinglePost from "./pages/SinglePost";
+import Profile from "./pages/Profile";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import {useTheme} from './utils/ThemeContext';
+//import Sidebar from "./components/Sidebar";
 
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import SinglePost from './pages/SinglePost';
-import Profile from './pages/Profile';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Sidebar from './components/Sidebar';
-
+// Importing our theme provider which will make our global state available to child components
+import ThemeProvider from './utils/ThemeContext';
+//import {theme, setTheme} from './components/Sidebar/index.js'
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -41,43 +45,29 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 function App() {
+ 
+
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          
-          <Header/>
-          <div className="container">
-            
-            <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-              <Route 
-                path="/me"
-                element={<Profile />}
-              />
-              <Route 
-                path="/profiles/:username" 
-                element={<Profile />}
-              />
-              <Route path="/posts/:postId" 
-                element={<SinglePost />}
-              />
-            </Routes>
+        <ThemeProvider>
+          <div className="flex-column justify-flex-start min-100-vh"  >
+            <Header />
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/me" element={<Profile />} />
+                <Route path="/profiles/:username" element={<Profile />} />
+                <Route path="/posts/:postId" element={<SinglePost />} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </ThemeProvider>
       </Router>
     </ApolloProvider>
   );

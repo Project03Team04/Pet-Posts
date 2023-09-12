@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "cdbreact": "^1.5.18",
-    "react-icons": "^4.10.1"
+    "react-icons": "^4.10.1",
+    "react-switch": "^7.0.0"
   }
 }

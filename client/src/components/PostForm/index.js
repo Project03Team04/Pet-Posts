@@ -67,7 +67,7 @@ const PostForm = () => {
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`text-gray ${
+            className={`text-grey ${
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
           >

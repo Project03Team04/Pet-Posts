@@ -14,7 +14,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
           <div key={post._id} className="post-card ">
             <h4 className="post-header">
               {showUsername ? (
-                <Link className="text-gray" to={`/profiles/${post.postAuthor}`}>
+                <Link className="text-grey" to={`/profiles/${post.postAuthor}`}>
                   {post.postAuthor}
                   <span className="post-date">{post.createdAt}</span>
                 </Link>
@@ -33,12 +33,12 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
             <div className="post-footer ">
               <ul className="flex-row list-style-none justify-between align-center">
                 <li>
-                  <Link className='btn-like' to={`/posts/likes`}>Like  </Link>
+                  <Link className='btn-like ' to={`/posts/likes`}>Like  </Link>
                   
                 </li>
                 <li>
                   
-                    <Link className="btn-comment" to={`/posts/${post._id}`}>
+                    <Link className="btn-comment btn-hover " to={`/posts/${post._id}`}>
                       Comment
                     </Link>
                   

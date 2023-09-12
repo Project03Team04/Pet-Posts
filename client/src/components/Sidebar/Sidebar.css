@@ -1,4 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;700&display=swap');
+:root{
+    --primary-color: #FFC727;
+  --primary-light-color: #FFE192;
+  --secondary-color: grey;
+  --secondary-light-color: lightgrey;
+  --primary-background-color: white;
+  --hover-color: #7d9fef;
+  }
+
+  .helloween{
+    --primary-color:  #ba40cd ;
+    --primary-light-color: rgb(238, 160, 17);
+    --secondary-color:  white;
+    --secondary-light-color:rgb(56, 51, 51);
+    --primary-background-color: grey;
+    
+    --hover-color: ORANGE;
+  }
+  
+  .default{
+    --primary-color: #FFC727;
+    --primary-light-color: #FFE192;
+    --secondary-color: grey;
+    --secondary-light-color: lightgrey;
+    --primary-background-color: white;
+    --hover-color: #7d9fef;
+  }
 
 header{
     display: flex;
@@ -7,7 +34,7 @@ header{
     width:100%;
     padding: 1em;
     padding-bottom: 2em;
-    
+    background-color:var(--primary-background-color);
     
 }
 
@@ -28,29 +55,37 @@ header .header-img a{
 
 header h1.title-lg {
     font-family: 'Baloo Da 2', cursive;
-    color: #FFC727;
+    color: var(--primary-color);
     font-size: 2.5em;
-    
+    text-decoration: none;
     margin-top: 1em;
     margin-bottom: 0;
  }
  header h1.title-sm {
     visibility: hidden;
     height: 0;
+    text-decoration: none;
  }
 header .title {
     text-decoration: none;
+    width:11rem;
     
+}
+header.title-extended{
+    width: 60%;
+
 }
 header p{
     font-family: 'Baloo Da 2', cursive;
-    color: #FFC727;
+    color: var(--primary-color);
     font-size: 1em;
     
 }
 
+
+
 .navbar{
-    background-color:white;
+    background-color: var(--primary-background-color);
     height: 100px;
     display: flex;
    justify-content: flex-start;
@@ -63,7 +98,7 @@ header p{
 }
 
 .nav-menu {
-    background-color: #FFE192;
+    background-color: var(--primary-light-color);
     width:250px;
     height: 100vh;
     display: flex;
@@ -103,7 +138,7 @@ transition: 350ms;
     
 }
 .nav-text :hover {
-    background-color: rgb(253, 157, 4);
+    background-color: var(--hover-color);
 
 }
 
@@ -112,7 +147,7 @@ transition: 350ms;
     
 }
 .navbar-toggle{
-    background-color: #FFE192;
+    background-color: var(--primary-light-color);
     width: 100%;
     height:80px;
     display: flex;
@@ -135,10 +170,14 @@ span{
         height: 6em;
         
     }
-    
+    header .title {
+        text-decoration: none;
+        width:6rem;
+        
+    }
     header h1.title-sm{
     font-family: 'Baloo Da 2', cursive;
-    color:#FFC727;
+    color:var(--primary-color);
     font-size: 2.5em;
     visibility: visible;
     margin-top: 0;
@@ -147,6 +186,7 @@ span{
     header h1.title-lg {
       height: 0;
        visibility: hidden;
+       z-index:0;
      }
 
     
@@ -154,6 +194,13 @@ span{
         visibility: hidden;  
     }
    
+    .title-img{
+        width: 5rem;
+        height: 5rem;
+        margin-left: -3rem;
+        margin-top: 1.5rem;
+        z-index: 10;
+      }
     .btn-sidebar{
     width: 60%;
     height: 10%;
@@ -169,6 +216,7 @@ span{
     margin-left: 2.5em;
 }
 .btn-sidebar:hover {
-    background-color:  #FFE192;
+    background-color:  var(--primary-light-color);
 }
+
 }

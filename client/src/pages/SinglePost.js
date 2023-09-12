@@ -3,13 +3,16 @@ import React from 'react';
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import { useTheme } from "../utils/ThemeContext";
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_POST } from '../utils/queries';
 
 const SinglePost = () => {
+  //theme
+  const {theme}=useTheme();
+  const mainTheme=`m-3 ${theme}`
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { postId } = useParams();
 
@@ -24,7 +27,7 @@ const SinglePost = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="my-3">
+    <div className={mainTheme}>
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {post.postAuthor} <br />
         <span style={{ fontSize: '1rem' }}>

@@ -1,1 +1,27 @@
 #A0B2A7
+
+.helloween-theme{
+    --primary-color:  #901ca2;;
+    --primary-light-color: #ba40cd ;
+    --secondary-color:  #eab190;
+    --secondary-light-color:#f9934a ;
+    --primary-background-color: #E0E0E0;
+    --hover-color: rgb(61, 241, 61);
+  }
+
+.default-theme{
+    --primary-color: #FFC727;
+    --primary-light-color: #FFE192;
+    --secondary-color: grey;
+    --secondary-light-color: lightgrey;
+    --primary-background-color: white;
+    --hover-color: #7d9fef;
+}
+.dark-theme{
+    --primary-color: #3f69ca;
+    --primary-light-color: #7d9fef;
+    --secondary-color: white;
+    --secondary-light-color: rgb(93, 92, 92);
+    --primary-background-color:lightgrey;
+    --hover-color:#3f69ca;
+}

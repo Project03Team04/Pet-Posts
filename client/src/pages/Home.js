@@ -5,13 +5,15 @@ import PostList from '../components/PostList';
 import PostForm from '../components/PostForm';
 
 import { QUERY_POSTS } from '../utils/queries';
+import { useTheme } from "../utils/ThemeContext";
 
 const Home = () => {
+  const {theme}=useTheme();
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
 
   return (
-    <main>
+    <main className={theme}>
       <div className="flex-column justify-center">
         <div
           className="post-form-container"

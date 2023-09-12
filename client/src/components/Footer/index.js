@@ -1,21 +1,17 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import { useTheme } from "../../utils/ThemeContext";
+import ThemeSwitcher from "../ThemeSwitcher";
 const Footer = () => {
+  const { theme, changeTheme } = useTheme('');
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="">
+    <footer className={theme} >
+      <ThemeSwitcher onChange={changeTheme} />
       <div className="">
-        {location.pathname !== '/' && (
-          <button
-            className="btn"
-            onClick={() => navigate(-1)}
-          >
-             Go Back
-          </button>
-        )}
-        <h6>
+       
+        <h6 className='text-grey'>
           Made with{' '}
           <span
             className="emoji"
@@ -28,6 +24,7 @@ const Footer = () => {
           by the Pet Posts team.
         </h6>
       </div>
+
     </footer>
   );
 };
