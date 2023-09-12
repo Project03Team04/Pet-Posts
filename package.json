@@ -15,9 +15,5 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  },
-  "dependencies": {
-    "cdbreact": "^1.5.18",
-    "react-icons": "^4.10.1"
   }
 }

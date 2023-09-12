@@ -61,38 +61,40 @@ const PostForm = () => {
   };
 
   return (
-    <div >
-      <h3>What's on your pet mind?</h3>
+    <div>
+      <h3>What's on your techy mind?</h3>
 
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`text-gray ${
+            className={`m-0 ${
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
           >
             Character Count: {characterCount}/280
           </p>
-          <form className="post-form"
-            onSubmit={handleFormSubmit}>
-            <div className="post-form-body">
+          <form
+            className="flex-row justify-center justify-space-between-md align-center"
+            onSubmit={handleFormSubmit}
+          >
+            <div className="col-12 col-lg-9">
               <textarea
                 name="postText"
                 placeholder="Here's a new post..."
                 value={postText}
-                className="post-form-input "
+                className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
             </div>
 
-            <div className="post-form-footer display-flex justify-center">
-              <button className="btn-post btn text-white m-2" type="submit">
+            <div className="col-12 col-lg-3">
+              <button className="btn btn-primary btn-block py-3" type="submit">
                 Add Post
               </button>
             </div>
             {error && (
-              <div className="col-12 my-3 bg-danger p-3">
+              <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}
               </div>
             )}

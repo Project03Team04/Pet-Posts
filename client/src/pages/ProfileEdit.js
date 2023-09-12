@@ -52,7 +52,7 @@ console.log(formData, "formData");
       <h3>Edit Profile</h3>
       <form onSubmit={handleSubmit}>
         {/* form sections for editing profile */}
-        <div className="form-group" >
+        <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -62,7 +62,7 @@ console.log(formData, "formData");
             onChange={handleChange}
           />
         </div>
-        <div className="form-group ">
+        <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -82,7 +82,7 @@ console.log(formData, "formData");
           />
         </div>
         
-        <button className="btn-post btn text-white m-1" type="submit">Save Changes</button>
+        <button type="submit">Save Changes</button>
       </form>
     </div>
   );

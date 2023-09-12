@@ -46,22 +46,22 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="user-info">
-          <h3>Username: {user.username}</h3>
-          <h3>Bio: {user.bio}</h3>
-        </div>
-      <div className="flex-row justify-center">
-        <h2 className="">
+      <div className="flex-row justify-center mb-3">
+        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
         {userParam || user.username === Auth.getProfile().data.username ? (
-        <div className="">
-          <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
-        </div>
-          ) : null}
-        
-        <div className="post-form-container">
+  <div className="">
+  <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
+</div>
+  ) : null}
+<div className="user-info">
+  <h3>Username: {user.username}</h3>
+  <h3>Bio: {user.bio}</h3>
+</div>
+
+        <div className="col-12 col-md-10 mb-5">
           {/* Render the ProfileEdit component when in edit mode */}
           {editMode ? (
             <ProfileEdit user={user} />
@@ -76,7 +76,7 @@ const Profile = () => {
         </div>
         {!userParam && (
           <div
-            className="post-list-container"
+            className="col-12 col-md-10 mb-3 p-3"
             style={{ border: '1px dotted #1a1a1a' }}
           >
             <PostForm />
