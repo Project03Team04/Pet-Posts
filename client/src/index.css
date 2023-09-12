@@ -692,6 +692,9 @@ ul.list-style-none{
   }
 }
 
-.user-info {
-
+.form-group {
+  padding: 0.3em 1em;
+  border-radius: 0.5em;
+  text-decoration: none;
+  font-family:'Baloo Da 2', cursive ;
 }

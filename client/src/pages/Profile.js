@@ -46,6 +46,10 @@ const Profile = () => {
 
   return (
     <div>
+      <div className="user-info">
+          <h3>Username: {user.username}</h3>
+          <h3>Bio: {user.bio}</h3>
+        </div>
       <div className="flex-row justify-center">
         <h2 className="">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
@@ -56,10 +60,7 @@ const Profile = () => {
           <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
         </div>
           ) : null}
-        <div className="user-info">
-          <h3>Username: {user.username}</h3>
-          <h3>Bio: {user.bio}</h3>
-        </div>
+        
         <div className="post-form-container">
           {/* Render the ProfileEdit component when in edit mode */}
           {editMode ? (
