@@ -52,11 +52,14 @@ const Profile = () => {
         </h2>
 
         {userParam || user.username === Auth.getProfile().data.username ? (
-  <div className="">
-    <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
-  </div>
-) : null}
-
+        <div className="">
+          <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
+        </div>
+          ) : null}
+        <div className="user-info">
+          <h3>Username: {user.username}</h3>
+          <h3>Bio: {user.bio}</h3>
+        </div>
         <div className="post-form-container">
           {/* Render the ProfileEdit component when in edit mode */}
           {editMode ? (
