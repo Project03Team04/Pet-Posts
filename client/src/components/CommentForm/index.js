@@ -54,7 +54,7 @@ const CommentForm = ({ postId }) => {
             {error && <span className="ml-2">{error.message}</span>}
           </p>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="flex-row justify-center align-center"
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9">
