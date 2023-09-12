@@ -26,7 +26,9 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                 </>
               )}
             </h4>
+            
             <div className="post-body">
+              <img src={post.postImage}></img>
               <p>{post.postText}</p>
             </div>
 

@@ -103,7 +103,7 @@ const PostForm = () => {
           >
             Character Count: {characterCount}/280
           </p>
-          <input type='file' id='postImage' ref={fileSelectorRef} onChange={handleImageSelect}></input><button type='submit' onClick={handleUpload}>Submit</button>
+          
           <form className="post-form"
             onSubmit={handleFormSubmit}>
             <div className="post-form-body">
@@ -116,7 +116,7 @@ const PostForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
-            
+            <input type='file' id='postImage' ref={fileSelectorRef} onChange={handleImageSelect}></input>
             <div className="post-form-footer display-flex justify-center">
               <button className="btn-post btn text-white m-2" type="submit" onClick={handleUpload}>
                 Add Post
