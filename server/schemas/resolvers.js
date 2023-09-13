@@ -67,18 +67,21 @@ const resolvers = {
     },
     likePost: async (parent, { postId }, context) => {
       if (context.user) {
-        return Post.findOneAndUpdate(
+        const updatedPost = await Post.findOneAndUpdate(
           { _id: postId },
           {
-           $inc: { likes: 1 }
+            $inc: { likes: 1 },
           },
           {
             new: true,
             runValidators: true,
           }
         );
+    
+        return updatedPost; // Return the updated post object
       }
     },
+    
 
     addComment: async (parent, { postId, commentText }, context) => {
       if (context.user) {

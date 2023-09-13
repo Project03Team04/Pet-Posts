@@ -29,7 +29,7 @@ const Home = () => {
             <PostList
               posts={posts}
               title="Some Feed for Pet(s)..."
-              likePost={likePost}
+              likePost = {likePost}
             />
           )}
         </div>

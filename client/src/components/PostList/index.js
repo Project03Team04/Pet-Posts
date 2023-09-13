@@ -20,11 +20,12 @@ const PostList = ({
       const { data } = await likePost({
         variables: { postId: postId },
       });
-  
+      window.location.reload(); 
     } catch (error) {
-      console.error('Error liking/unliking post:', error);
+      console.error('Error liking post:', error);
     }
     console.log("hello")
+    
   };
   console.log(posts)
   return (

@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
-// import { useMutation } from '@apollo/client'; if want to add button in single post page
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client'; 
+
 
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
@@ -88,7 +88,7 @@ const SinglePost = () => {
            {post.likes > 0 ? 'Unlike' : 'Like'}
         </button> */}
         {/* NO NEED FOR LIKE BUTTON IN SINGLE POST PAGE */}
-        {/* <span>{post.likes}</span> */}
+        <span>{post.likes}</span>
       </div>
       </div>
 
