@@ -23,7 +23,8 @@ const SinglePost = () => {
     variables: { postId: postId },
   });
 
-  const [post, setPost] = useState(data?.post || {});
+  const post = data?.me || data?.post || {};
+
   const [isLiked, setIsLiked] = useState(false);
 
   // const [likePost, {error}]  = useMutation(LIKE_POST);
@@ -48,6 +49,15 @@ const SinglePost = () => {
     return <div>Post not found</div>;
   }
 
+  const imageContainerStyle = {
+    display: 'flex',
+    justifyContent: 'flex-start'
+  }
+  const imageStyle = {
+    maxHeight: 200,
+    maxWidth: 200,
+  }
+
 
   return (
     <div className="my-3">
@@ -57,13 +67,12 @@ const SinglePost = () => {
           had this to share on {post.createdAt}
         </span>
       </h3>
-      <div className="bg-light py-4">
+      <div style={imageContainerStyle} className="bg-light py-4">
+        <img style={imageStyle} src={post.postImage}></img>
         <blockquote
           className="p-4"
           style={{
             fontSize: '1.5rem',
-            fontStyle: 'italic',
-            border: '2px dotted #1a1a1a',
             lineHeight: '1.5',
           }}
         >

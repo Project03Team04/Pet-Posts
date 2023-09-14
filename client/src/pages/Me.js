@@ -11,7 +11,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 
-const Profile = () => {
+const Me = () => {
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -53,6 +53,7 @@ const Profile = () => {
 
         {userParam || user.username === Auth.getProfile().data.username ? (
   <div className="">
+  <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
 </div>
   ) : null}
 <div className="user-info">
@@ -84,4 +85,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Me;
