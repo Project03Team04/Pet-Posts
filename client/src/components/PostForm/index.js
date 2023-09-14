@@ -4,14 +4,12 @@ import { useMutation } from "@apollo/client";
 
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
-import YoutubeEmbed from "../YoutubeVideo";
+
 import Auth from "../../utils/auth";
 
-const getVideoIdfROMuRL=(videoUrl) => {
-    return  videoUrl.split("=")[1]?.split("&")[0];
-}
 
-const PostForm = () => {
+
+const  PostForm = () =>{
   const [postText, setPostText] = useState("");
   const [postImage, setPostImage] = useState(null);
   const [postVideo, setPostVideo] = useState("");
@@ -19,7 +17,7 @@ const PostForm = () => {
   const [characterCount, setCharacterCount] = useState(0);
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   //const [videoUrl, setVideoUrl] = useState("");
- const videoId= getVideoIdfROMuRL(postVideo);
+ //const videoId= getVideoIdfROMuRL(postVideo);
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
       try {
@@ -49,7 +47,6 @@ const PostForm = () => {
     console.log("try this", postVideo);
    
  
-    console.log("VIDEO ID", videoId);
     //const embedUrl=`https://www.youtube.com/embed/${videoId}`;
 
     try {
@@ -77,30 +74,16 @@ const PostForm = () => {
     }
   };
 
-  const handleImageSelect = (event) => {
-
-
-  setPostImage(event.target.files[0])
- }
-
- const handleUpload = async () => {
-  const {url} = await fetch("/s3Url").then(res => res.json())
-
-  await fetch(url, {
-    method: 'PUT',
-    headers: {
-      "Content-Type": 'multipart/form-data'
-    },
-    body: postImage
-  })
-
-  const imageUrl = url.split('?')[0]
-
-
-  const handleVideo = (event) => {
+ const handleVideo = (event) => {
     setPostVideo(event.target.value);
    
-  };
+  } 
+
+  const handleImageSelect = (event) => {
+      setPostImage(event.target.files[0]);
+  }
+
+  
   const handleUpload = async () => {
     const { url } = await fetch("/s3Url").then((res) => res.json());
 
