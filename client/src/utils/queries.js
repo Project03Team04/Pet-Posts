@@ -36,7 +36,6 @@ export const QUERY_SINGLE_POST = gql`
       postText
       postImage
       postAuthor
-      postImage
       createdAt
       comments {
         _id
