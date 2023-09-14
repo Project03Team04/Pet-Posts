@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
@@ -9,8 +9,10 @@ import Auth from '../../utils/auth';
 
 const PostForm = () => {
   const [postText, setPostText] = useState('');
-
+  const [postImage, setPostImage] = useState(null);
+  const fileSelectorRef = useRef(null)
   const [characterCount, setCharacterCount] = useState(0);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState('')
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
@@ -36,15 +38,17 @@ const PostForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    const imageUrl = postImage ? await handleUpload() : ""
+    console.log("try this", imageUrl);
     try {
       const { data } = await addPost({
         variables: {
           postText,
+          postImage: imageUrl,
           postAuthor: Auth.getProfile().data.username,
         },
       });
-
+      
       setPostText('');
     } catch (err) {
       console.error(err);
@@ -60,45 +64,72 @@ const PostForm = () => {
     }
   };
 
+  const handleImageSelect = (event) => {
+  setPostImage(event.target.files[0])
+  console.log(postImage);
+  
+ }
+
+ const handleUpload = async () => {
+  const {url} = await fetch("/s3Url").then(res => res.json())
+
+  await fetch(url, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": 'multipart/form-data'
+    },
+    body: postImage
+  })
+
+  const imageUrl = url.split('?')[0]
+  console.log("this is the url", imageUrl);
+
+  setUploadedImageUrl(imageUrl)
+  setPostImage(null)
+  fileSelectorRef.current.value = null
+  return imageUrl
+ }
+
   return (
-    <div>
-      <h3>What's on your techy mind?</h3>
+    <div >
+      <h3>What's on your pet mind?</h3>
 
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 ${
+            className={`text-gray ${
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
           >
             Character Count: {characterCount}/280
           </p>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
-            <div className="col-12 col-lg-9">
+          
+          <form className="post-form"
+            onSubmit={handleFormSubmit}>
+            <div className="post-form-body">
               <textarea
                 name="postText"
                 placeholder="Here's a new post..."
                 value={postText}
-                className="form-input w-100"
+                className="post-form-input "
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
             </div>
-
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+            <input type='file' id='postImage' ref={fileSelectorRef} onChange={handleImageSelect}></input>
+            <div className="post-form-footer display-flex justify-center">
+              <button className="btn-post btn text-white m-2" type="submit" onClick={handleUpload}>
                 Add Post
               </button>
             </div>
             {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
+              <div className="col-12 my-3 bg-danger p-3">
                 {error.message}
               </div>
             )}
           </form>
+
+          {uploadedImageUrl && <img src={uploadedImageUrl}></img>}
         </>
       ) : (
         <p>

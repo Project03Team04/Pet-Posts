@@ -9,6 +9,7 @@ export const QUERY_USER = gql`
       posts {
         _id
         postText
+        postImage
         createdAt
       }
     }
@@ -20,6 +21,7 @@ export const QUERY_POSTS = gql`
     posts {
       _id
       postText
+      postImage
       postAuthor
       createdAt
     }
@@ -32,6 +34,7 @@ export const QUERY_SINGLE_POST = gql`
       _id
       postText
       postAuthor
+      postImage
       createdAt
       comments {
         _id
@@ -52,6 +55,7 @@ export const QUERY_ME = gql`
       posts {
         _id
         postText
+        postImage
         postAuthor
         createdAt
       }

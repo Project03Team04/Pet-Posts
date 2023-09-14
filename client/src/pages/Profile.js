@@ -46,8 +46,8 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+      <div className="flex-column justify-center">
+        <h2 className="">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
@@ -61,7 +61,7 @@ const Profile = () => {
   <h3>Bio: {user.bio}</h3>
 </div>
 
-        <div className="col-12 col-md-10 mb-5">
+        <div className="post-form-container">
           {/* Render the ProfileEdit component when in edit mode */}
           {editMode ? (
             <ProfileEdit user={user} />
@@ -76,7 +76,7 @@ const Profile = () => {
         </div>
         {!userParam && (
           <div
-            className="col-12 col-md-10 mb-3 p-3"
+            className="post-list-container"
             style={{ border: '1px dotted #1a1a1a' }}
           >
             <PostForm />

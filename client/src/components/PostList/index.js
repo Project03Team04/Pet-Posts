@@ -1,12 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-const PostList = ({
-  posts,
-  title,
-  showTitle = true,
-  showUsername = true,
-}) => {
+import React from "react";
+import { Link } from "react-router-dom";
+//import PostFooter from '../PostFooter';
+const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
@@ -16,35 +11,42 @@ const PostList = ({
       {showTitle && <h3>{title}</h3>}
       {posts &&
         posts.map((post) => (
-          <div key={post._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+          <div key={post._id} className="post-card ">
+            <h4 className="post-header">
               {showUsername ? (
-                <Link
-                  className="text-light"
-                  to={`/profiles/${post.postAuthor}`}
-                >
-                  {post.postAuthor} <br />
-                  <span style={{ fontSize: '1rem' }}>
-                    posted this post on {post.createdAt}
-                  </span>
+                <Link className="text-gray" to={`/profiles/${post.postAuthor}`}>
+                  {post.postAuthor}
+                  <span className="post-date">{post.createdAt}</span>
                 </Link>
               ) : (
                 <>
-                  <span style={{ fontSize: '1rem' }}>
+                  <span style={{ fontSize: "1rem" }}>
                     You posted this post on {post.createdAt}
                   </span>
                 </>
               )}
             </h4>
-            <div className="card-body bg-light p-2">
+            
+            <div className="post-body">
+              <img src={post.postImage}></img>
               <p>{post.postText}</p>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/posts/${post._id}`}
-            >
-              Join the discussion on this post.
-            </Link>
+
+            <div className="post-footer ">
+              <ul className="flex-row list-style-none justify-between align-center">
+                <li>
+                  <Link className='btn-like' to={`/posts/likes`}>Like  </Link>
+                  
+                </li>
+                <li>
+                  
+                    <Link className="btn-comment" to={`/posts/${post._id}`}>
+                      Comment
+                    </Link>
+                  
+                </li>
+              </ul>
+            </div>
           </div>
         ))}
     </div>
