@@ -109,17 +109,17 @@ const Me = () => {
             />
           )}
         </div>
-        {!userParam && (
-          <div
-            className="post-list-container"
-            style={{ border: '1px dotted #1a1a1a' }}
-          >
-            <PostForm />
-          </div>
-        )}
+        <div
+          className="post-list-container"
+          style={{ border: '1px dotted #1a1a1a' }}
+        >
+          <PostForm />
+        </div>
       </div>
-    
-  );
-};
+    );
+  }
+
+ 
+ 
 
 export default Me;
