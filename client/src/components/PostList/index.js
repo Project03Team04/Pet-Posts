@@ -17,6 +17,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
         variables: { postId: postId },
       });
       window.location.reload(); 
+      
     } catch (error) {
       console.error('Error liking post:', error);
     }
@@ -30,10 +31,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
     return  videoUrl.split("=")[1]?.split("&")[0];
 }
 
-  const imageContainerStyle = {
-    display: 'flex',
-    justifyContent: 'flex-start'
-  }
+  
   const imageStyle = {
     maxHeight: 200,
     maxWidth: 200,
@@ -61,7 +59,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
             </h4>
             
 
-            <div className="post-body">
+            <div  className="post-body">
               {post.postVideo ?(
                 <>
                 <YoutubeEmbed videoId={post.postVideo.split("=")[1]?.split("&")[0]} />
@@ -69,27 +67,28 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
               ):(
                 <span></span>
               )}
-              <img src={post.postImage}></img>
+              <img style={imageStyle} src={post.postImage}></img>
 
               <p>{post.postText}</p>
             </div>
+            <div className="post-footer">
+
             <Link
-              className="btn btn-primary btn-block btn-squared"
+              className="btn-comment btn-block"
               to={`/posts/${post._id}`}
             >
-              Join the discussion on this post.
+              Comment
             </Link>
-            <button
-          style={{
-            backgroundColor: post.likes > 0 ? '#7393B3' : '#7393B3', //Only like button can make a diff button for unlike functionality 
-            color: '#fff', //styling will change 
-            border: 'none',
-            padding: '10px 20px', 
-            cursor: 'pointer',}}
-            onClick={() => handleLike(post._id)}>
-           {post.likes > 0 ? 'Like' : 'Like'}
-        </button>
-        <span>{post.likes}</span>
+            <button className="btn-block btn-like"
+               style={{
+                 backgroundColor: post.likes > 0 ? '#FFC727' : '#7393B3', //Only like button can make a diff button for unlike functionality 
+                color: '#fff', //styling will change 
+               }}
+              onClick={() => handleLike(post._id)}>
+              {post.likes > 0 ? 'Like' : 'Like'}
+            </button>
+           <span>{post.likes}</span>
+           </div>
           </div>
         ))}
     </div>

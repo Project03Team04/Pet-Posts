@@ -518,7 +518,7 @@ textarea{
 
 /*   POST */
 .post-card{
- 
+  width: 100%;
   margin: 1rem  0.5rem;
   border-bottom: 1rem solid lightgray;
   border-bottom-left-radius: 1rem;
@@ -546,7 +546,7 @@ textarea{
   justify-self: flex-end;
 }
 .post-footer{
-  min-height: 3rem;
+  min-height: 2.5rem;
   border-top:  0.2rem solid lightgray;
   padding-top: 0.6rem;
 
@@ -561,12 +561,13 @@ textarea{
   border-left: 0.1rem solid #FFE192;
 }
 .post-form-body{
- 
+ display: flex;
+ flex-direction: column;
 
 
 }
 .post-form-footer{
-  height: 3rem;
+  height: 3.5rem;
   border-top:  0.2rem solid #FFE192;
  
  
