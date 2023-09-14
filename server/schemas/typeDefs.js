@@ -17,6 +17,7 @@ const typeDefs = gql`
     postAuthor: String
     createdAt: String
     comments: [Comment]!
+    likes: Int #includes like filed in the Post type
   }
 
   type Comment {
@@ -47,6 +48,7 @@ const typeDefs = gql`
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     editUserProfile(username: String!, email: String!, bio: String!): User
+    likePost(postId: ID!): Post #add likePost mutation
   }
 `;
 

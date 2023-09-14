@@ -65,5 +65,13 @@ export const EDIT_USER_PROFILE = gql`
       email
       bio
     }
+  }`
+export const LIKE_POST = gql`
+mutation Mutation($postId: ID!) {
+  likePost(postId: $postId) {
+    postAuthor
+    postText
+    likes
   }
+}
 `;
