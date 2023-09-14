@@ -39,7 +39,6 @@ const PostForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const imageUrl = postImage ? await handleUpload() : ""
-    console.log("try this", imageUrl);
     try {
       const { data } = await addPost({
         variables: {
@@ -66,8 +65,6 @@ const PostForm = () => {
 
   const handleImageSelect = (event) => {
   setPostImage(event.target.files[0])
-  console.log(postImage);
-  
  }
 
  const handleUpload = async () => {
@@ -82,7 +79,6 @@ const PostForm = () => {
   })
 
   const imageUrl = url.split('?')[0]
-  console.log("this is the url", imageUrl);
 
   setUploadedImageUrl(imageUrl)
   setPostImage(null)
@@ -129,7 +125,6 @@ const PostForm = () => {
             )}
           </form>
 
-          {uploadedImageUrl && <img src={uploadedImageUrl}></img>}
         </>
       ) : (
         <p>
