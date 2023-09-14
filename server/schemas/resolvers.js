@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Post } = require('../models');
 const { signToken } = require('../utils/auth');
+const { ConnectionCreatedEvent } = require('mongodb');
 
 const resolvers = {
   Query: {
@@ -48,8 +49,10 @@ const resolvers = {
 
       return { token, user };
     },
+
     addPost: async (parent, { postText, postImage, postVideo }, context) => {
       console.log("resolvers", postImage);
+
       if (context.user) {
         const post = await Post.create({
           postText,
@@ -67,6 +70,24 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    likePost: async (parent, { postId }, context) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $inc: { likes: 1 },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+    
+        return updatedPost; // Return the updated post object
+      }
+    },
+    
+
     addComment: async (parent, { postId, commentText }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
@@ -117,7 +138,30 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    editUserProfile: async (parent, { username, email, bio }, context) => {
+      console.log("hello"); 
+      if (context.user) {
+        const userId = context.user._id;
+        
+  try {
+          
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: userId },
+            { $set: { username: username, email: email, bio: bio } },
+            { new: true }
+          );
+  
+          return updatedUser;
+        } catch (error) {
+          throw new Error('Error updating user profile');
+        }
+      } else {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+    },
   },
+  
 };
 
 module.exports = resolvers;

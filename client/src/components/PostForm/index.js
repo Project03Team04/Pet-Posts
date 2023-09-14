@@ -44,12 +44,14 @@ const PostForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     const imageUrl = postImage ? await handleUpload() : "";
     console.log("try this", postVideo);
    
  
     console.log("VIDEO ID", videoId);
     //const embedUrl=`https://www.youtube.com/embed/${videoId}`;
+
     try {
       const { data } = await addPost({
         variables: {
@@ -76,9 +78,24 @@ const PostForm = () => {
   };
 
   const handleImageSelect = (event) => {
-    setPostImage(event.target.files[0]);
-    console.log(postImage);
-  };
+
+
+  setPostImage(event.target.files[0])
+ }
+
+ const handleUpload = async () => {
+  const {url} = await fetch("/s3Url").then(res => res.json())
+
+  await fetch(url, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": 'multipart/form-data'
+    },
+    body: postImage
+  })
+
+  const imageUrl = url.split('?')[0]
+
 
   const handleVideo = (event) => {
     setPostVideo(event.target.value);
@@ -155,7 +172,6 @@ const PostForm = () => {
             )}
           </form>
 
-          {uploadedImageUrl && <img src={uploadedImageUrl}></img>}
         </>
       ) : (
         <p>

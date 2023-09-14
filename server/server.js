@@ -17,6 +17,7 @@ const server = new ApolloServer({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
@@ -29,7 +30,6 @@ app.get('/s3Url', async (req, res) => {
   const url = await generateUploadUrl()
   res.send({url})
 });
-
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();

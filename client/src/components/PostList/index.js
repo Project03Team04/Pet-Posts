@@ -1,15 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import YoutubeEmbed from "../YoutubeVideo";
+
+import { useMutation } from '@apollo/client'; 
+import { LIKE_POST } from '../../utils/mutations';
+
 //import PostFooter from '../PostFooter';
 
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
+  
+  const [likePost, {error}]  = useMutation(LIKE_POST);
+  const handleLike = async (postId ) => {
+    try {
+      const { data } = await likePost({
+        variables: { postId: postId },
+      });
+      window.location.reload(); 
+    } catch (error) {
+      console.error('Error liking post:', error);
+    }
+    console.log("hello")
+    
+  };
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
   const getVideoIdfROMuRL=(videoUrl) => {
     return  videoUrl.split("=")[1]?.split("&")[0];
 }
+
+  const imageContainerStyle = {
+    display: 'flex',
+    justifyContent: 'flex-start'
+  }
+  const imageStyle = {
+    maxHeight: 200,
+    maxWidth: 200,
+  }
 
   return (
     <div>
@@ -32,6 +60,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
               )}
             </h4>
             
+
             <div className="post-body">
               {post.postVideo ?(
                 <>
@@ -41,24 +70,26 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                 <span></span>
               )}
               <img src={post.postImage}></img>
+
               <p>{post.postText}</p>
             </div>
-
-            <div className="post-footer ">
-              <ul className="flex-row list-style-none justify-between align-center">
-                <li>
-                  <Link className='btn-like' to={`/posts/likes`}>Like  </Link>
-                  
-                </li>
-                <li>
-                  
-                    <Link className="btn-comment" to={`/posts/${post._id}`}>
-                      Comment
-                    </Link>
-                  
-                </li>
-              </ul>
-            </div>
+            <Link
+              className="btn btn-primary btn-block btn-squared"
+              to={`/posts/${post._id}`}
+            >
+              Join the discussion on this post.
+            </Link>
+            <button
+          style={{
+            backgroundColor: post.likes > 0 ? '#7393B3' : '#7393B3', //Only like button can make a diff button for unlike functionality 
+            color: '#fff', //styling will change 
+            border: 'none',
+            padding: '10px 20px', 
+            cursor: 'pointer',}}
+            onClick={() => handleLike(post._id)}>
+           {post.likes > 0 ? 'Like' : 'Like'}
+        </button>
+        <span>{post.likes}</span>
           </div>
         ))}
     </div>

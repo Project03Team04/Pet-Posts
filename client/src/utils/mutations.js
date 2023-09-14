@@ -60,3 +60,22 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const EDIT_USER_PROFILE = gql`
+  mutation editUserProfile( $username: String!, $email: String!, $bio: String!) {
+    editUserProfile( username: $username, email: $email, bio: $bio) {
+      _id
+      username
+      email
+      bio
+    }
+  }`
+export const LIKE_POST = gql`
+mutation Mutation($postId: ID!) {
+  likePost(postId: $postId) {
+    postAuthor
+    postText
+    likes
+  }
+}
+`;

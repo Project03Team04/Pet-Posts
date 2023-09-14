@@ -22,7 +22,6 @@ const s3 = new aws.S3({
 module.exports = async function generateUploadUrl() {
     const rawBytes = await randomBytes(16)
     const imageName = rawBytes.toString('hex')
-    console.log(imageName);
 
     const params = ({
         Bucket: bucketName,
