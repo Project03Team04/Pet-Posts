@@ -73,7 +73,31 @@ const  PostForm = () =>{
     }
   };
 
+ css/profile
+  const handleImageSelect = (event) => {
+
+
+  setPostImage(event.target.files[0])
+ }
+
+//  const handleUpload = async () => {
+//   const {url} = await fetch("/s3Url").then(res => res.json())
+
+//   await fetch(url, {
+//     method: 'PUT',
+//     headers: {
+//       "Content-Type": 'multipart/form-data'
+//     },
+//     body: postImage
+//   })
+
+//   const imageUrl = url.split('?')[0]
+
+
+  const handleVideo = (event) => {
+
  const handleVideo = (event) => {
+
     setPostVideo(event.target.value);
    
   } 

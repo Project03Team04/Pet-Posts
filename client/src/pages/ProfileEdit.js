@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { EDIT_USER_PROFILE } from '../utils/mutations';
 import Auth from '../utils/auth';
-const ProfileEdit = ({ user }) => {
+
+
+const ProfileEdit = ({ user, updateUser }) => {
     const [formData, setFormData] = useState({
       username: user.username,
       email: user.email,
-      bio: user.bio,
+      bio: user.bio || '',
       
     });
 
@@ -42,6 +44,7 @@ console.log(formData, "formData");
         email: data.editUserProfile.email,
         bio: data.editUserProfile.bio,
       });
+      updateUser(data.editUserProfile);
     } catch (error) {
      
     }
@@ -49,7 +52,7 @@ console.log(formData, "formData");
 
   return (
     <div>
-      <h3>Edit Profile</h3>
+      <h3> Edit Profile</h3>
       <form onSubmit={handleSubmit}>
         {/* form sections for editing profile */}
         <div className="form-group">
