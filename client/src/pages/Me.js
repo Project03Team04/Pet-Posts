@@ -85,14 +85,14 @@ const Me = () => {
       <h2 className="">
         Viewing {userParam ? `${user.username}'s` : 'your'} profile.
       </h2>
-      <div className="">
-        {userParam || user.username === Auth.getProfile().data.username ? (
+      {Auth.loggedIn() && (
           <div className="">
             <button onClick={toggleEditMode} className="btn-post btn text-white m-1">
               Edit Profile
             </button>
           </div>
-        ) : null}
+        )}
+     
         <div className="user-info">
           <h3>Username: {user.username}</h3>
           <h3> Bio: {user.bio} </h3>
@@ -118,7 +118,7 @@ const Me = () => {
           </div>
         )}
       </div>
-    </div>
+    
   );
 };
 
