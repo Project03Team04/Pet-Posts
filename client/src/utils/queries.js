@@ -10,6 +10,7 @@ export const QUERY_USER = gql`
         _id
         postText
         postImage
+        postVideo
         createdAt
       }
     }
@@ -22,6 +23,7 @@ export const QUERY_POSTS = gql`
       _id
       postText
       postImage
+      postVideo
       postAuthor
       createdAt
       likes
@@ -35,6 +37,7 @@ export const QUERY_SINGLE_POST = gql`
       _id
       postText
       postImage
+      postVideo
       postAuthor
       createdAt
       comments {
@@ -57,6 +60,7 @@ export const QUERY_ME = gql`
         _id
         postText
         postImage
+        postVideo
         postAuthor
         createdAt
       }

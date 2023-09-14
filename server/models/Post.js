@@ -13,6 +13,12 @@ const postSchema = new Schema({
     type: String,
     required: false
   },
+
+  postVideo: {
+    type: String,
+    required: false
+  },
+
   postAuthor: {
     type: String,
     required: true,
@@ -23,11 +29,15 @@ const postSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
+
+
+
   //addition of filed to store the number of likes
   likes: {
     type: Number,
     default: 0,
   },
+
   comments: [
     {
       commentText: {

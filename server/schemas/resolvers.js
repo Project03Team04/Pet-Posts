@@ -49,11 +49,15 @@ const resolvers = {
 
       return { token, user };
     },
-    addPost: async (parent, { postText, postImage }, context) => {
+
+    addPost: async (parent, { postText, postImage, postVideo }, context) => {
+      console.log("resolvers", postImage);
+
       if (context.user) {
         const post = await Post.create({
           postText,
           postImage,
+          postVideo,
           postAuthor: context.user.username,
         });
 
