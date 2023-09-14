@@ -53,7 +53,7 @@ const Me = () => {
 
         {userParam || user.username === Auth.getProfile().data.username ? (
   <div className="">
-  <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
+  <button onClick={toggleEditMode} className="btn-post text-white m-1">Edit Profile</button>
 </div>
   ) : null}
 <div className="user-info">
@@ -64,6 +64,7 @@ const Me = () => {
           {editMode ? (
             <ProfileEdit user={user} />
           ) : (
+            
             <PostList
               posts={user.posts}
               title={`${user.username}'s posts...`}
