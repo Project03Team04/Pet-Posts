@@ -24,6 +24,7 @@ export const QUERY_POSTS = gql`
       postImage
       postAuthor
       createdAt
+      likes
     }
   }
 `;
@@ -35,6 +36,7 @@ export const QUERY_SINGLE_POST = gql`
       postText
       postImage
       postAuthor
+      postImage
       createdAt
       comments {
         _id
