@@ -6,6 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    bio: String
     posts: [Post]!
   }
 
@@ -46,6 +47,7 @@ const typeDefs = gql`
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    editUserProfile(username: String!, email: String!, bio: String!): User
     likePost(postId: ID!): Post #add likePost mutation
   }
 `;
