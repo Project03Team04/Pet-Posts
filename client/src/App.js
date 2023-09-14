@@ -7,7 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ReactSwitch from 'react-switch';
+//
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -52,7 +52,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <ThemeProvider>
+        <ThemeProvider >
           <div className="flex-column justify-flex-start min-100-vh"  >
             <Header />
             <div className="container">

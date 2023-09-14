@@ -20,7 +20,7 @@ const ThemeSwitcher=() => {
         <> 
         
       <select
-                onChange={changeTheme}
+                onChange={(event)=>changeTheme(event.target.value)}
                
               >
                 <option>Choose theme...</option>

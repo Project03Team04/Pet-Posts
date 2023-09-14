@@ -13,7 +13,7 @@ const Home = () => {
   const posts = data?.posts || [];
 
   return (
-    <main className={theme}>
+    <main className="">
       <div className="flex-column justify-center">
         <div
           className="post-form-container"

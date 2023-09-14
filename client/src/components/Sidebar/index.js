@@ -7,7 +7,7 @@ import { SidebarData } from "./SidebarData";
 import Auth from "../../utils/auth";
 //import "./Sidebar.css";
 import { IconContext } from "react-icons";
-import ReactSwitch from "react-switch";
+//import ReactSwitch from "react-switch";
 
 import { useTheme } from "../../utils/ThemeContext";
 //import ThemeSwitcher from "../ThemeSwitcher";

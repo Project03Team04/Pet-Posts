@@ -12,36 +12,29 @@ export default function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light');
 
   // Method to update our state
-  const changeTheme = () => {
+  const changeTheme = (newTheme) => {
     console.log('inside toggle theme');
-    let curr='light';
-    switch (curr){
+    //let curr='light';
+    switch (newTheme){
      case 'light': 
      return setTheme('light');
      case 'dark':
       return setTheme('dark');
      case 'halloween':
       return setTheme('halloween') 
+     default: return setTheme('light');
     } 
-    // setTheme=(curr) => {
-
-    //  if (curr==='light') {
-    //   return 'light' ;
-    //  }
-    //  if (curr==='dark') {
-    //   return 'dark' ;
-    //  }
-    //   if (curr==='halloween'){
-    //     return 'halloween';
-    // } 
-    //   };
+    
   };
 
   // The provider component will wrap all other components inside of it that need access to our global state
   return (
     // Dark theme and toggle theme are getting provided to the child components
     <ThemeContext.Provider value={{theme, changeTheme}}>
-      {children}
+      <div className={theme}>
+        {children}
+      </div>
+      
     </ThemeContext.Provider>
   );
 }

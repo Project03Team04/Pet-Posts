@@ -346,7 +346,7 @@ template {
 END NORMALIZE CSS
 =================
 */
-/*
+
 :root{
   --primary-color: #FFC727;
   --primary-light-color: #FFE192;
@@ -355,13 +355,13 @@ END NORMALIZE CSS
   --primary-background-color:white;
   --hover-color: #7d9fef;
   }
-*/
+
 .halloween{
     --primary-color:  #901ca2;;
     --primary-light-color: #ba40cd ;
     --secondary-color:  #eab190;
     --secondary-light-color:#f9934a ;
-    --primary-background-color: white;
+    --primary-background-color:rgba(255, 166, 0, 0.145);
     --hover-color: rgb(61, 241, 61);
 }
 .dark{
@@ -405,9 +405,11 @@ body {
   
 }
 .container{
-  width: 60%;
+  width: 100%;
   justify-content: center;
-  margin-left: 20%;
+  margin-left:0;
+  padding-left: 10%;
+  background-color: var(--primary-background-color);
 }
 header{
   display: flex;

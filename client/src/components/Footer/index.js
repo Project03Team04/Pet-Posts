@@ -7,7 +7,7 @@ const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className={theme} >
+    <footer className="" >
       <ThemeSwitcher onChange={changeTheme} />
       <div className="">
        

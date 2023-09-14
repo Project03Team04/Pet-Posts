@@ -7,13 +7,13 @@ import HeaderImage from "../HeaderImage";
 import { useTheme } from "../../utils/ThemeContext";
 
 const Header = () => {
-  const theme=useTheme();
+  //const {theme}=useTheme();
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
   return (
-    <header className={theme}>
+    <header >
       <Sidebar />
       <div className="top">
         <div className="title-extended flex-row justify-start">
