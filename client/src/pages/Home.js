@@ -9,7 +9,7 @@ import { LIKE_POST } from '../utils/mutations';
 const Home = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
-
+  console.log(posts);
   const [likePost, {error}]  = useMutation(LIKE_POST);
 
 

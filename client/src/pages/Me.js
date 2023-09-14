@@ -18,7 +18,7 @@ const Me = () => {
   });
 
   const user = data?.me || data?.user || {};
-
+  console.log("me", user.posts);
   const [editMode, setEditMode] = useState(false);
 
   const toggleEditMode = () => {
@@ -48,7 +48,7 @@ const Me = () => {
         </h2>
         {Auth.loggedIn() && (
           <div className="">
-            <button onClick={toggleEditMode} className="btn-post btn text-white m-1">
+            <button onClick={toggleEditMode} className="btn-block m-1">
               Edit Profile
             </button>
           </div>

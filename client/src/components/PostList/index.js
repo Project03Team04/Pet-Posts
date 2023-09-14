@@ -9,7 +9,6 @@ import { LIKE_POST } from '../../utils/mutations';
 //import PostFooter from '../PostFooter';
 
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
-  
   const [likePost, {error}]  = useMutation(LIKE_POST);
   const handleLike = async (postId ) => {
     try {
@@ -24,9 +23,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
     console.log("hello")
     
   };
-  if (!posts.length) {
-    return <h3>No Posts Yet</h3>;
-  }
+  
   const getVideoIdfROMuRL=(videoUrl) => {
     return  videoUrl.split("=")[1]?.split("&")[0];
 }
