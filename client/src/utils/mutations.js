@@ -25,19 +25,22 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postText: String!, $postImage: String) {
-    addPost(postText: $postText, postImage: $postImage) {
+mutation AddPost($postText: String!, $postVideo: String, $postImage: String) {
+  addPost(postText: $postText, postVideo: $postVideo, postImage: $postImage) {
+    createdAt
+    postAuthor
+    postVideo
+    postText
+    _id
+    postImage
+    comments {
       _id
-      postText
-      postImage
-      postAuthor
+      commentText
+      commentAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
     }
   }
+}
 `;
 
 export const ADD_COMMENT = gql`
@@ -46,6 +49,7 @@ export const ADD_COMMENT = gql`
       _id
       postText
       postImage
+      postVideo
       postAuthor
       createdAt
       comments {

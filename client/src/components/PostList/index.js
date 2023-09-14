@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import YoutubeEmbed from "../YoutubeVideo";
+
 import { useMutation } from '@apollo/client'; 
 import { LIKE_POST } from '../../utils/mutations';
+
 //import PostFooter from '../PostFooter';
+
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   
   const [likePost, {error}]  = useMutation(LIKE_POST);
@@ -21,6 +26,9 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
+  const getVideoIdfROMuRL=(videoUrl) => {
+    return  videoUrl.split("=")[1]?.split("&")[0];
+}
 
   const imageContainerStyle = {
     display: 'flex',
@@ -52,8 +60,17 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
               )}
             </h4>
             
-            <div className="post-body" style={imageContainerStyle}>
-              <img style={imageStyle} src={post.postImage}></img>
+
+            <div className="post-body">
+              {post.postVideo ?(
+                <>
+                <YoutubeEmbed videoId={post.postVideo.split("=")[1]?.split("&")[0]} />
+                </>
+              ):(
+                <span></span>
+              )}
+              <img src={post.postImage}></img>
+
               <p>{post.postText}</p>
             </div>
             <Link
