@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useMutation } from '@apollo/client'; 
+import { LIKE_POST } from '../../utils/mutations';
 //import PostFooter from '../PostFooter';
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
-  if (!posts.length) {
-    return <h3>No Posts Yet</h3>;
-  }
-  // const [likePost, {error}]  = useMutation(LIKE_POST);
+  
+  const [likePost, {error}]  = useMutation(LIKE_POST);
   const handleLike = async (postId ) => {
     try {
       const { data } = await likePost({
@@ -18,6 +18,9 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
     console.log("hello")
     
   };
+  if (!posts.length) {
+    return <h3>No Posts Yet</h3>;
+  }
   console.log(posts)
   return (
     <div>
