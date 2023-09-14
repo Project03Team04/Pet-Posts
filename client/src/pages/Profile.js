@@ -58,7 +58,6 @@ const Profile = () => {
   ) : null}
 <div className="user-info">
   <h3>Username: {user.username}</h3>
-  <h3>Bio: {user.bio}</h3>
 </div>
 
         <div className="post-form-container">
