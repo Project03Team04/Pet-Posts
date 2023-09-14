@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import PostForm from '../components/PostForm';
@@ -9,7 +9,6 @@ import ProfileEdit from './ProfileEdit';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
-
 
 const Me = () => {
   const { username: userParam } = useParams();
@@ -26,16 +25,12 @@ const Me = () => {
     setEditMode(!editMode);
   };
 
-  // navigate to your own profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/me" />;
-  }
-
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (!user?.username) {
+  // Check if the user is not logged in
+  if (!Auth.loggedIn()) {
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to
@@ -44,23 +39,65 @@ const Me = () => {
     );
   }
 
+  // Check if the userParam matches the logged-in user's username
+  if (Auth.getProfile().data.username === userParam) {
+    return (
+      <div>
+        <h2 className="">
+          Viewing {userParam ? `${userParam}'s` : 'your'} profile.
+        </h2>
+        {Auth.loggedIn() && (
+          <div className="">
+            <button onClick={toggleEditMode} className="btn-post btn text-white m-1">
+              Edit Profile
+            </button>
+          </div>
+        )}
+        <div className="user-info">
+          <h3>Username: {user.username}</h3>
+          <h3> Bio: {user.bio}</h3>
+        </div>
+        <div className="post-form-container">
+          {editMode ? (
+            <ProfileEdit user={user} />
+          ) : (
+            <PostList
+              posts={user.posts}
+              title={`${user.username}'s posts...`}
+              showTitle={false}
+              showUsername={false}
+            />
+          )}
+        </div>
+        <div
+          className="post-list-container"
+          style={{ border: '1px dotted #1a1a1a' }}
+        >
+          <PostForm />
+        </div>
+      </div>
+    );
+  }
+
+ 
   return (
     <div>
-      <div className="flex-column justify-center">
-        <h2 className="">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-        </h2>
-
-        {userParam || user.username === Auth.getProfile().data.username ? (
-  <div className="">
-  <button onClick={toggleEditMode} className="btn-post btn text-white m-1">Edit Profile</button>
-</div>
-  ) : null}
-<div className="user-info">
-</div>
-
+      <h2 className="">
+        Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+      </h2>
+      {Auth.loggedIn() && (
+          <div className="">
+            <button onClick={toggleEditMode} className="btn-post btn text-white m-1">
+              Edit Profile
+            </button>
+          </div>
+        )}
+     
+        <div className="user-info">
+          <h3>Username: {user.username}</h3>
+          <h3> Bio: {user.bio} </h3>
+        </div>
         <div className="post-form-container">
-          {/* Render the ProfileEdit component when in edit mode */}
           {editMode ? (
             <ProfileEdit user={user} />
           ) : (
@@ -81,7 +118,7 @@ const Me = () => {
           </div>
         )}
       </div>
-    </div>
+    
   );
 };
 
