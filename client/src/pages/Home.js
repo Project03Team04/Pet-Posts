@@ -22,7 +22,7 @@ const Home = () => {
         >
           <PostForm />
         </div>
-        <div className="col-12 col-md-8 mb-3">
+        <div className="">
           {loading ? (
             <div>Loading...</div>
           ) : (

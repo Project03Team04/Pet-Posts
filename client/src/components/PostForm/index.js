@@ -16,8 +16,7 @@ const  PostForm = () =>{
   const fileSelectorRef = useRef(null);
   const [characterCount, setCharacterCount] = useState(0);
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
-  //const [videoUrl, setVideoUrl] = useState("");
- //const videoId= getVideoIdfROMuRL(postVideo);
+ 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
       try {
@@ -137,12 +136,12 @@ const  PostForm = () =>{
               onChange={handleImageSelect}
             ></input>
             <div>
-              Video URL:
+              Youtube URL:
               <input id="postVideo" type="url" onChange={handleVideo}></input>
             </div>
-            <div className="post-form-footer display-flex justify-center">
+            <div className="post-form-footer display-flex justify-center ">
               <button
-                className="btn-post btn text-white m-2"
+                className="btn-post btn-block text-white m-1"
                 type="submit"
                 onClick={handleUpload}
               >
