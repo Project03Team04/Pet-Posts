@@ -6,6 +6,15 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
     return <h3>No Posts Yet</h3>;
   }
 
+  const imageContainerStyle = {
+    display: 'flex',
+    justifyContent: 'flex-start'
+  }
+  const imageStyle = {
+    maxHeight: 200,
+    maxWidth: 200,
+  }
+
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
@@ -27,8 +36,8 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
               )}
             </h4>
             
-            <div className="post-body">
-              <img src={post.postImage}></img>
+            <div className="post-body" style={imageContainerStyle}>
+              <img style={imageStyle} src={post.postImage}></img>
               <p>{post.postText}</p>
             </div>
 
