@@ -56,3 +56,13 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const LIKE_POST = gql`
+mutation Mutation($postId: ID!) {
+  likePost(postId: $postId) {
+    postAuthor
+    postText
+    likes
+  }
+}
+`;

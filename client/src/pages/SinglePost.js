@@ -1,12 +1,17 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState } from 'react';
+// import API function 
+// import {likeOrUnlikePost} from '../components/api'; 
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client'; 
+
 
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
+// import {LIKE_POST} from '../utils/mutations';
 import { QUERY_SINGLE_POST } from '../utils/queries';
 
 const SinglePost = () => {
@@ -18,11 +23,32 @@ const SinglePost = () => {
     variables: { postId: postId },
   });
 
-  const post = data?.post || {};
+  const [post, setPost] = useState(data?.post || {});
+  const [isLiked, setIsLiked] = useState(false);
+
+  // const [likePost, {error}]  = useMutation(LIKE_POST);
+  // const handleLike = async () => {
+  //   try {
+  //     const { data } = await likePost({
+  //       variables: { postId: postId },
+  //     });
+  //     setPost(data.likePost);
+  //     setIsLiked(!isLiked);
+  //   } catch (error) {
+  //     console.error('Error liking post:', error);
+  //   }
+  //   console.log("hello")
+  // };
 
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  if (!data?.post) {
+    return <div>Post not found</div>;
+  }
+
+
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
@@ -50,7 +76,22 @@ const SinglePost = () => {
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <CommentForm postId={post._id} />
+        <div>
+        {/* <button
+          style={{
+            backgroundColor: post.likes > 0 ? '#ff0000' : '#007bff', // Change colors as needed
+            color: '#fff', // Change text color as needed
+            border: 'none',
+            padding: '10px 20px', // Adjust padding as needed
+            cursor: 'pointer',}}
+            onClick={handleLike}>
+           {post.likes > 0 ? 'Unlike' : 'Like'}
+        </button> */}
+        {/* NO NEED FOR LIKE BUTTON IN SINGLE POST PAGE */}
+        <span>{post.likes}</span>
       </div>
+      </div>
+
     </div>
   );
 };
