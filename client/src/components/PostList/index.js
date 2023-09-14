@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import YoutubeEmbed from "../YoutubeVideo";
 //import PostFooter from '../PostFooter';
+
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
+  const getVideoIdfROMuRL=(videoUrl) => {
+    return  videoUrl.split("=")[1]?.split("&")[0];
+}
 
   return (
     <div>
@@ -28,6 +33,13 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
             </h4>
             
             <div className="post-body">
+              {post.postVideo ?(
+                <>
+                <YoutubeEmbed videoId={post.postVideo.split("=")[1]?.split("&")[0]} />
+                </>
+              ):(
+                <span></span>
+              )}
               <img src={post.postImage}></img>
               <p>{post.postText}</p>
             </div>

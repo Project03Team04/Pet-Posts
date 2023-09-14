@@ -13,6 +13,12 @@ const postSchema = new Schema({
     type: String,
     required: false
   },
+
+  postVideo: {
+    type: String,
+    required: false
+  },
+
   postAuthor: {
     type: String,
     required: true,
@@ -23,6 +29,7 @@ const postSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
+
   comments: [
     {
       commentText: {
