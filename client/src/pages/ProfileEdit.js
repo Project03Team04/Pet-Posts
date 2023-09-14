@@ -52,7 +52,7 @@ console.log(formData, "formData");
 
   return (
     <div>
-      <h3>Edit Profile</h3>
+      <h3> Edit Profile</h3>
       <form onSubmit={handleSubmit}>
         {/* form sections for editing profile */}
         <div className="form-group">
@@ -85,7 +85,7 @@ console.log(formData, "formData");
           />
         </div>
         
-        <button type="submit">Save Changes</button>
+        <button type="submit" className="btn-post btn text-white m-1">Save Changes</button>
       </form>
     </div>
   );
