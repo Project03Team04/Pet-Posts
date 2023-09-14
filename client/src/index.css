@@ -361,7 +361,7 @@ END NORMALIZE CSS
     --primary-light-color: #ba40cd ;
     --secondary-color:  #eab190;
     --secondary-light-color:#f9934a ;
-    --primary-background-color:rgba(255, 166, 0, 0.145);
+    --primary-background-color:rgba(9, 255, 0, 0.085);
     --hover-color: rgb(61, 241, 61);
 }
 .dark{
@@ -420,6 +420,9 @@ header{
   padding-bottom: 2em;
   background-color:var(--primary-background-color);
   
+}
+footer{
+  background-color: var(--primary-background-color);
 }
 
 header .top {
