@@ -30,7 +30,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
     return  videoUrl.split("=")[1]?.split("&")[0];
 }
 
-  const imageContainerStyle = {
+  const postContainerStyle = {
     display: 'flex',
     justifyContent: 'flex-start'
   }
@@ -61,7 +61,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
             </h4>
             
 
-            <div className="post-body">
+            <div style={postContainerStyle} className="post-body">
               {post.postVideo ?(
                 <>
                 <YoutubeEmbed videoId={post.postVideo.split("=")[1]?.split("&")[0]} />
@@ -69,7 +69,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
               ):(
                 <span></span>
               )}
-              <img src={post.postImage}></img>
+              <img style={imageStyle} src={post.postImage}></img>
 
               <p>{post.postText}</p>
             </div>
