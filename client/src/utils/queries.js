@@ -33,6 +33,7 @@ export const QUERY_SINGLE_POST = gql`
     post(postId: $postId) {
       _id
       postText
+      postImage
       postAuthor
       postImage
       createdAt
