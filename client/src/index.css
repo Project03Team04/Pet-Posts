@@ -1,3 +1,7 @@
+
+
+
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -343,7 +347,40 @@ END NORMALIZE CSS
 =================
 */
 
+:root{
+  --primary-color: #FFC727;
+  --primary-light-color: #FFE192;
+  --secondary-color: grey;
+  --secondary-light-color: lightgrey;
+  --primary-background-color:white;
+  --hover-color: #7d9fef;
+  }
 
+.halloween{
+    --primary-color:  #901ca2;;
+    --primary-light-color: #ba40cd ;
+    --secondary-color:  #eab190;
+    --secondary-light-color:#f9934a ;
+    --primary-background-color:rgba(9, 255, 0, 0.085);
+    --hover-color: rgb(61, 241, 61);
+}
+.dark{
+  --primary-color: #3f69ca;
+  --primary-light-color: #7d9fef;
+  --secondary-color: white;
+  --secondary-light-color: rgb(93, 92, 92);
+  --primary-background-color:lightgrey;
+  --hover-color:#3f69ca;
+}
+
+.light{
+  --primary-color: #FFC727;
+  --primary-light-color: #FFE192;
+  --secondary-color: grey;
+  --secondary-light-color: lightgrey;
+  --primary-background-color: white;
+  --hover-color: #7d9fef;
+}
 *{
   box-sizing: border-box;
   margin: 0;
@@ -364,20 +401,169 @@ END NORMALIZE CSS
 html,
 body {
   min-height: 100%;
+  background-color: var(--primary-background-color);
   
 }
 .container{
-  width: 60%;
+  width: 100%;
   justify-content: center;
-  margin-left: 20%;
+  margin-left:0;
+  padding-left: 10%;
+  background-color: var(--primary-background-color);
+}
+header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:100%;
+  padding: 1em;
+  padding-bottom: 2em;
+  background-color:var(--primary-background-color);
+  
+}
+footer{
+  background-color: var(--primary-background-color);
+}
+
+header .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:100%;
+  margin-left: 1em;
+  align-items: center;
+}
+header .header-img a{
+  height: 50px;
+  width: 50px;
+}
+
+  
+
+header h1.title-lg {
+  font-family: 'Baloo Da 2', cursive;
+  color: var(--primary-color);
+  font-size: 2.5em;
+  text-decoration: none;
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+header h1.title-sm {
+  visibility: hidden;
+  height: 0;
+  text-decoration: none;
+}
+header .title {
+  text-decoration: none;
+  width:11rem;
+  
+}
+header.title-extended{
+  width: 60%;
+
+}
+header p{
+  font-family: 'Baloo Da 2', cursive;
+  color: var(--primary-color);
+  font-size: 1em;
+  
+}
+
+
+
+.navbar{
+  background-color: var(--primary-background-color);
+  height: 100px;
+  display: flex;
+ justify-content: flex-start;
+ align-items: center;
+}
+.menu-bars {
+  margin-left: 1rem;
+  font-size: 2rem;
+  background: none;
+}
+
+.nav-menu {
+  background-color: var(--primary-light-color);
+  width:250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center; 
+  position:fixed;
+  top: 0;
+  left:-100%;
+  transition: 850ms;
+  
+}
+
+.nav-menu.active {
+  left:0;
+transition: 350ms;
+
+}
+.nav-text {
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  padding:1em 0px 1em 2em;
+  list-style: none;
+  height: 2em;
+  font-family: 'Baloo Da 2', cursive;
+  margin: 1em;
+}
+.nav-text a{
+  text-decoration: none;
+  color: black;
+  font-size: 1.5em;
+  width:95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border-radius: 0.4em;
+  
+}
+.nav-text :hover {
+  background-color: var(--hover-color);
+
+}
+
+.nav-menu-items {
+  width: 100%;
+  
+}
+.navbar-toggle{
+  background-color: var(--primary-light-color);
+  width: 100%;
+  height:80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+span{
+  margin-left: 0.2em;
+  font-family: 'Baloo Da 2', cursive;
+}
+ .themeSwitcher{
+  margin-left: 3em;
+  align-self: flex-end;
+ }
+
+
+.btn-sidebar{
+  height: 0;
+  width:0;
+  visibility: hidden;
+
 }
 /*  TEXT */
 .text-white{
   color:white;
 }
 
-.text-gray{
-  color: gray;
+.text-grey{
+  color: var(--secondary-color);
   text-decoration: none;
   display: inline-flex;
   justify-content: space-between; 
@@ -385,9 +571,12 @@ body {
   padding: 0.3rem;
 }
 .text-primary{
-  color: #FFC727;
+  color: var(--primary-color);
 }
 
+.decoration-none{
+  text-decoration: none;
+}
 /*    MARGINS*/
 .m-0{
   margin: 0;
@@ -411,8 +600,8 @@ body {
  .btn-main{
   visibility: visible;
 }
-.btn-main:hover {
-  background-color:  #f7db07;
+.btn-hover:hover {
+  background-color:var(--hover-color);
 }
 .btn-block {
   
@@ -427,18 +616,18 @@ body {
 }
 
 .btn-primary{
-  background-color: white;
+  background-color: var(--primary-background-color);
 }
 .btn-submit{
   
   width: 90%;
-  border: 3px solid #FFC727;
+  border: 3px solid var(--primary-color);
   border-radius: 10px;
 }
 .btn-like{
   
   padding: 0.3em 1em;
-  border: 1px solid lightgrey;
+  border: 1px solid var(--secondary-light-color);
   border-radius: 0.5em;
   margin:1em;
   text-decoration: none;
@@ -448,7 +637,7 @@ body {
 .btn-comment{
   
   padding: 0.3em 1em;
-  border: 1px solid lightgrey;
+  border: 1px solid var(--secondary-light-color);
   border-radius: 0.5em;
   margin :0.5em;
   text-decoration: none;
@@ -456,10 +645,10 @@ body {
   font-family:'Baloo Da 2', cursive ;
 }
 .btn-post{
-  background-color: #FFC727;
+  background-color: var(--primary-color);
   
   width: 95%;
-  border: 3px solid #FFC727;
+  border: 3px solid var(--primary-color);
   border-radius: 10px;
 }
 /*form universal styles*/
@@ -474,7 +663,7 @@ form{
   margin:0.5em;
   padding: 0.5em;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--secondary-light-color);
 }
 textarea{
   width: 90%;
@@ -499,36 +688,43 @@ textarea{
 .justify-between{
   justify-content: space-between;
 }
+
+.justify-center{
+  justify-content: flex-start;
+}
 .align-center{
   align-content: center;
 }
 
 /*CARD*/
 .card-login{
-  border: 2px solid #FFC727;
+  border: 2px solid var(--primary-color);
   border-radius: 10px;
   min-width: 70vw;
 }
 
 .card-header{
-  border-bottom: 2px solid #FFC727;
+  border-bottom: 2px solid var(--primary-color);
   padding: 1em;
-  background-color:  #FFE192; 
+  background-color:  var(--primary-light-color); 
 }
 
 /*   POST */
 .post-card{
-  width: 100%;
+ 
   margin: 1rem  0.5rem;
-  border-bottom: 1rem solid lightgray;
+  border-bottom: 1rem solid var(--secondary-light-color);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  border-right: 0.1rem solid lightgray;
-  border-left: 0.1rem solid lightgray;
+  border-right: 0.1rem solid var(--secondary-light-color);
+  border-left: 0.1rem solid var(--secondary-light-color);
 }
 .post-header{
-  background-color: #FFE192;
-  border-bottom: 0.2rem solid lightgray;
+  
+  background-color:  var(--primary-light-color);
+  
+  
+  border-bottom: 0.2rem solid var(--secondary-light-color);
   min-height: 3rem;
 
 }
@@ -546,8 +742,8 @@ textarea{
   justify-self: flex-end;
 }
 .post-footer{
-  min-height: 2.5rem;
-  border-top:  0.2rem solid lightgray;
+  min-height: 3rem;
+  border-top:  0.2rem solid var(--secondary-light-color);
   padding-top: 0.6rem;
 
 }
@@ -555,20 +751,19 @@ textarea{
 /*  POST FORM  */
 .post-form{
   margin: 1rem  0.5rem;
-  border-bottom: 0.5rem solid #FFE192;
+  border-bottom: 0.5rem solid var(--primary-light-color);
  
-  border-right: 0.1rem solid #FFE192;
-  border-left: 0.1rem solid #FFE192;
+  border-right: 0.1rem solid var(--primary-light-color);
+  border-left: 0.1rem solid var(--primary-light-color);
 }
 .post-form-body{
- display: flex;
- flex-direction: column;
+ 
 
 
 }
 .post-form-footer{
-  height: 3.5rem;
-  border-top:  0.2rem solid #FFE192;
+  height: 3rem;
+  border-top:  0.2rem solid var(--primary-light-color)2;
  
  
   
@@ -588,7 +783,68 @@ ul.list-style-none{
   resize: none;
 }
 
+/*   IMAGES*/
+/*   random header image near website title*/
+.title-img{
+  width: 10rem;
+  height: 10rem;
+}
+
+
 @media screen and (max-width: 640px) {
+  header{
+    height: 6em;
+    
+}
+header .title {
+    text-decoration: none;
+    width:6rem;
+    
+}
+header h1.title-sm{
+font-family: 'Baloo Da 2', cursive;
+color:var(--primary-color);
+font-size: 2.5em;
+visibility: visible;
+margin-top: 0;
+margin-bottom: 1em;
+}
+header h1.title-lg {
+  height: 0;
+   visibility: hidden;
+   z-index:0;
+ }
+
+
+ header p{
+    visibility: hidden;  
+}
+
+.title-img{
+    width: 5rem;
+    height: 5rem;
+    margin-left: -3rem;
+    margin-top: 1.5rem;
+    z-index: 10;
+  }
+.btn-sidebar{
+width: 60%;
+height: 10%;
+background-color: white;
+padding: 0.5em 1em;
+visibility: visible;
+border: 1px solid black;
+border-radius: 0.5em;
+margin:1em;
+text-decoration: none;
+color: black;
+font-family:'Baloo Da 2', cursive ;
+margin-left: 2.5em;
+}
+.btn-sidebar:hover {
+background-color:  var(--primary-light-color);
+}
+
   .container{
     width: 95%;
     justify-content: center;
@@ -599,6 +855,13 @@ ul.list-style-none{
     width:0;
    visibility: hidden;
 
+}
+
+.title-img{
+  width: 5rem;
+  height: 5rem;
+  margin-left: -3rem;
+  margin-top: 1.5rem;
 }
   .col-sm-auto {
     flex-grow: 1;
