@@ -409,9 +409,9 @@ body {
   
 }
 .container{
-  width: 100%;
+  width: 40%;
   justify-content: center;
-  margin-left: -2em;
+  margin-left: 0;
   padding-left: 10%;
   
 }
@@ -432,6 +432,13 @@ header{
 }
 footer{
   background-color: var(--primary-background-color);
+  
+}
+footer h6.attribute a{
+  font-size: 0.5em;
+  color: var(--primary-light-color);
+  text-decoration: none;
+  margin-left: 1em;
 }
 
 header .top {
@@ -447,7 +454,9 @@ header .header-img a{
   width: 50px;
 }
 
-  
+a{
+  text-decoration: none;
+}
 
 header h1.title-lg {
   font-family: 'Baloo Da 2', cursive;
@@ -558,7 +567,12 @@ span{
   margin-left: 3em;
   align-self: flex-end;
  }
-
+ ul{
+  text-decoration: none;
+ }
+li{
+  text-decoration: none;
+}
 
 .btn-sidebar{
   height: 0;
@@ -598,8 +612,8 @@ span{
 }
 
  /*buttons universal styles*/
- .btn{
-  
+ .btn-thin {
+  border: 1px solid black;
   padding: 0.3em 1em;
   border-radius: 0.5em;
   text-decoration: none;
@@ -699,7 +713,7 @@ textarea{
 }
 
 .justify-center{
-  justify-content: flex-start;
+  justify-content: center;
 }
 .align-center{
   align-content: center;
@@ -801,6 +815,21 @@ ul.list-style-none{
 
 
 @media screen and (max-width: 640px) {
+
+  footer h6.attribute a{
+    font-size: 0.5em;
+    color: var(--primary-light-color);
+    text-decoration: none;
+    margin-left: 1em;
+  }
+
+  .copyright{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
   header{
     height: 6em;
     

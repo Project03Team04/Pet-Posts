@@ -142,7 +142,7 @@ const  PostForm = () =>{
             </div>
             <div className="post-form-footer display-flex justify-center ">
               <button
-                className="btn-post btn-block text-white m-1"
+                className="btn-post btn-thin text-white m-1"
                 type="submit"
                 onClick={handleUpload}
               >

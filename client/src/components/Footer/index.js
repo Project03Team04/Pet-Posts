@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="" >
       <ThemeSwitcher onChange={changeTheme} />
-      <div className="">
+      <div className="copyright">
        
         <h6 className='text-grey'>
           Made with{' '}
@@ -21,8 +21,9 @@ const Footer = () => {
           >
             ❤️
           </span>{' '}
-          by the Pet Posts team.
+          by the Pet Posts team
         </h6>
+        <h6 className="attribute"> <a href="https://storyset.com/nature">Nature illustrations by Storyset</a>  </h6>
       </div>
 
     </footer>
