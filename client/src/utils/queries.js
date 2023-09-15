@@ -6,9 +6,12 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      bio
       posts {
         _id
         postText
+        postImage
+        postVideo
         createdAt
       }
     }
@@ -20,8 +23,11 @@ export const QUERY_POSTS = gql`
     posts {
       _id
       postText
+      postImage
+      postVideo
       postAuthor
       createdAt
+      likes
     }
   }
 `;
@@ -31,6 +37,8 @@ export const QUERY_SINGLE_POST = gql`
     post(postId: $postId) {
       _id
       postText
+      postImage
+      postVideo
       postAuthor
       createdAt
       comments {
@@ -49,9 +57,12 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      bio
       posts {
         _id
         postText
+        postImage
+        postVideo
         postAuthor
         createdAt
       }

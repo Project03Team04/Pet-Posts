@@ -6,15 +6,19 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    bio: String
     posts: [Post]!
   }
 
   type Post {
     _id: ID
     postText: String
+    postImage: String
     postAuthor: String
+    postVideo: String
     createdAt: String
     comments: [Comment]!
+    likes: Int #includes like filed in the Post type
   }
 
   type Comment {
@@ -40,10 +44,12 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postText: String!): Post
+    addPost(postText: String!, postImage: String, postVideo:String): Post
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    editUserProfile(username: String!, email: String!, bio: String!): User
+    likePost(postId: ID!): Post #add likePost mutation
   }
 `;
 

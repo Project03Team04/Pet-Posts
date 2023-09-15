@@ -54,7 +54,7 @@ const CommentForm = ({ postId }) => {
             {error && <span className="ml-2">{error.message}</span>}
           </p>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="flex-column justify-center  align-center"
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9">
@@ -69,7 +69,7 @@ const CommentForm = ({ postId }) => {
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="btn-submit btn-primary btn-block py-3" type="submit">
                 Add Comment
               </button>
             </div>
