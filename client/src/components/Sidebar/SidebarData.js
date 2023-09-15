@@ -18,13 +18,13 @@ export const SidebarData=[
         cName: 'nav-text'
 
     },
-    {
-        title: 'Friends',
-        path: '/friends',
-        icon: <AiIcons.AiOutlineTeam />,
-        cName: 'nav-text'
+    // {
+    //     title: 'Friends',
+    //     path: '/friends',
+    //     icon: <AiIcons.AiOutlineTeam />,
+    //     cName: 'nav-text'
 
-    },
+    // },
     {
         title: 'About',
         path: '/about',
