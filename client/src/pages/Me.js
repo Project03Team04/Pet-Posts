@@ -87,7 +87,7 @@ const Me = () => {
       </h2>
       {Auth.loggedIn() && (
           <div className="">
-            <button onClick={toggleEditMode} className="btn-post btn text-white m-1">
+            <button onClick={toggleEditMode} className="btn-block">
               Edit Profile
             </button>
           </div>

@@ -85,7 +85,7 @@ console.log(formData, "formData");
           />
         </div>
         
-        <button type="submit" className="btn-post btn text-white m-1">Save Changes</button>
+        <button type="submit" className="btn-block">Save Changes</button>
       </form>
     </div>
   );
