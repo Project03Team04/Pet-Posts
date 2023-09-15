@@ -48,7 +48,7 @@ const Me = () => {
         </h2>
         {Auth.loggedIn() && (
           <div className="">
-            <button onClick={toggleEditMode} className="btn-block m-1">
+            <button onClick={toggleEditMode} className="btn-block">
               Edit Profile
             </button>
           </div>
@@ -101,19 +101,20 @@ const Me = () => {
           {editMode ? (
             <ProfileEdit user={user} />
           ) : (
-            <PostList
-              posts={user.posts}
-              title={`${user.username}'s posts...`}
-              showTitle={false}
-              showUsername={false}
-            />
+            <PostForm />
           )}
         </div>
         <div
           className="post-list-container"
           style={{ border: '1px dotted #1a1a1a' }}
         >
-          <PostForm />
+          <PostList
+              posts={user.posts}
+              title={`${user.username}'s posts...`}
+              showTitle={false}
+              showUsername={false}
+            />
+          
         </div>
       </div>
     );
