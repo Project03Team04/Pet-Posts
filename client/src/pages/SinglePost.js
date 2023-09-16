@@ -61,13 +61,14 @@ const SinglePost = () => {
 
   return (
     <div className="my-3">
-      <h3 className="card-header bg-dark text-light p-2 m-0">
+      <div className='post-card'>
+        <h3 className="post-header">
         {post.postAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
           had this to share on {post.createdAt}
         </span>
       </h3>
-      <div style={imageContainerStyle} className="bg-light py-4">
+      <div style={imageContainerStyle} className="post-body">
         <img style={imageStyle} src={post.postImage}></img>
         <blockquote
           className="p-4"
@@ -79,6 +80,8 @@ const SinglePost = () => {
           {post.postText}
         </blockquote>
       </div>
+      </div>
+      
 
       <div className="my-5">
         <CommentList comments={post.comments} />

@@ -105,7 +105,7 @@ const  PostForm = () =>{
   };
 
   return (
-    <div>
+    <div className="post-form" >
       <h3>What's on your pet mind?</h3>
 
       {Auth.loggedIn() ? (
@@ -118,7 +118,7 @@ const  PostForm = () =>{
             Character Count: {characterCount}/280
           </p>
 
-          <form className="post-form" onSubmit={handleFormSubmit}>
+          <form  onSubmit={handleFormSubmit}>
             <div className="post-form-body">
              
               <textarea
@@ -142,7 +142,7 @@ const  PostForm = () =>{
             </div>
             <div className="post-form-footer display-flex justify-center ">
               <button
-                className="btn-post btn-block text-white m-1"
+                className="btn-post btn-thin text-white m-1"
                 type="submit"
                 onClick={handleUpload}
               >

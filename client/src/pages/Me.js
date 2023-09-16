@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import * as HiIcons from 'react-icons/hi2'
 import PostForm from '../components/PostForm';
 import PostList from '../components/PostList';
 import ProfileEdit from './ProfileEdit';
@@ -48,7 +48,7 @@ const Me = () => {
         </h2>
         {Auth.loggedIn() && (
           <div className="">
-            <button onClick={toggleEditMode} className="btn-block m-1">
+            <button onClick={toggleEditMode} className="btn-submit m-1">
               Edit Profile
             </button>
           </div>
@@ -87,7 +87,9 @@ const Me = () => {
       </h2>
       {Auth.loggedIn() && (
           <div className="">
-            <button onClick={toggleEditMode} className="btn-post btn text-white m-1">
+
+            <button onClick={toggleEditMode} className="btn-save m-1"><HiIcons.HiMiniPencil className='mx-1' /> 
+
               Edit Profile
             </button>
           </div>
