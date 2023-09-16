@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 import Sidebar from "../Sidebar";
-
+import HeaderImage from "../HeaderImage";
+import { useTheme } from "../../utils/ThemeContext";
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
@@ -13,14 +14,19 @@ const Header = () => {
     <header>
       <Sidebar />
       <div className="top">
-        
-        <div>
-          <Link className="title" to="/">
-            <h1 className="title-lg">Pet Posts</h1>
-            <h1 className="title-sm">Pp</h1>
-          </Link>
-          <p className="">where pets can post </p>
+        <div className="title-extended flex-row justify-start">
+          <div className="title" >
+            <Link className="decoration-none" to="/">
+              <h1 className="title-lg">Pet Posts</h1>
+              <h1 className="title-sm">Pp</h1>
+            </Link>
+            <p className="">where pets can post </p>
+          </div>
+          <div>
+            <HeaderImage />
+          </div>
         </div>
+
         <div>
           {Auth.loggedIn() ? (
             <>
