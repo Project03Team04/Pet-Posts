@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import * as HiIcons from 'react-icons/hi2'
-import PostForm from '../components/PostForm';
-import PostList from '../components/PostList';
-import ProfileEdit from './ProfileEdit';
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import * as HiIcons from "react-icons/hi2";
+import PostForm from "../components/PostForm";
+import PostList from "../components/PostList";
+import ProfileEdit from "./ProfileEdit";
+import ProfilePic from "../components/profilePic";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Me = () => {
   const { username: userParam } = useParams();
@@ -44,7 +44,7 @@ const Me = () => {
     return (
       <div>
         <h2 className="">
-          Viewing {userParam ? `${userParam}'s` : 'your'} profile.
+          Viewing {userParam ? `${userParam}'s` : "your"} profile.
         </h2>
         {Auth.loggedIn() && (
           <div className="">
@@ -71,7 +71,7 @@ const Me = () => {
         </div>
         <div
           className="post-list-container"
-          style={{ border: '1px dotted #1a1a1a' }}
+          style={{ border: "1px dotted #1a1a1a" }}
         >
           <PostForm />
         </div>
@@ -79,49 +79,44 @@ const Me = () => {
     );
   }
 
- 
   return (
     <div>
       <h2 className="">
-        Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+        Viewing {userParam ? `${user.username}'s` : "your"} profile.
       </h2>
       {Auth.loggedIn() && (
-          <div className="">
+        <div className="">
+          <button onClick={toggleEditMode} className="btn-save m-1">
+            <HiIcons.HiMiniPencil className="mx-1" />
+            Edit Profile
+          </button>
+        </div>
+      )}
 
-            <button onClick={toggleEditMode} className="btn-save m-1"><HiIcons.HiMiniPencil className='mx-1' /> 
-
-              Edit Profile
-            </button>
-          </div>
-        )}
-     
-        <div className="user-info">
-          <h3>Username: {user.username}</h3>
-          <h3> Bio: {user.bio} </h3>
-        </div>
-        <div className="post-form-container">
-          {editMode ? (
-            <ProfileEdit user={user} />
-          ) : (
-            <PostList
-              posts={user.posts}
-              title={`${user.username}'s posts...`}
-              showTitle={false}
-              showUsername={false}
-            />
-          )}
-        </div>
-        <div
-          className="post-list-container"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <PostForm />
-        </div>
+      <div className="user-info">
+        <h3>Username: {user.username}</h3>
+        <h3> Bio: {user.bio} </h3>
       </div>
-    );
-  }
-
- 
- 
+      <div className="post-form-container">
+        {editMode ? (
+          <ProfileEdit user={user} />
+        ) : (
+          <PostList
+            posts={user.posts}
+            title={`${user.username}'s posts...`}
+            showTitle={false}
+            showUsername={false}
+          />
+        )}
+      </div>
+      <div
+        className="post-list-container"
+        style={{ border: "1px dotted #1a1a1a" }}
+      >
+        <PostForm />
+      </div>
+    </div>
+  );
+};
 
 export default Me;

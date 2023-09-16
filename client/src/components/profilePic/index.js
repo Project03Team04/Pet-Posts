@@ -2,7 +2,7 @@ import React, {useState} from "react";
 //import {ImgData} from './ImgData';
 const picData={
     title: "paws",
-    link: "assets/images/paws,png",
+    link: "assets/images/dog-paw.png",
     cName: "profile-img-default"
 }
 const ProfilePic=() =>{
@@ -10,7 +10,7 @@ const ProfilePic=() =>{
     
     return (
         <>
-        <img src={ImgData[imageIndex].path}  alt={ImgData[imageIndex].title}  className={ImgData[imageIndex].cName}/> 
+        <img src={picData.link}  alt={picData.title}  className={picData.cName}/> 
         </>
 
     )
