@@ -65,6 +65,7 @@ export const QUERY_ME = gql`
         postVideo
         postAuthor
         createdAt
+        likes
       }
     }
   }
