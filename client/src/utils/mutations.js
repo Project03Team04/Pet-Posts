@@ -79,3 +79,20 @@ mutation Mutation($postId: ID!) {
   }
 }
 `;
+export const REMOVE_POST = gql`
+  mutation removePost($postId: ID!) {
+    removePost(postId: $postId) {
+      _id
+      postText
+      postImage
+      postVideo
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentText
+        createdAt
+      }
+    }
+  }
+`;

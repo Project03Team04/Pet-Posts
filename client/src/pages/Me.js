@@ -61,19 +61,20 @@ const Me = () => {
           {editMode ? (
             <ProfileEdit user={user} />
           ) : (
-            <PostList
-              posts={user.posts}
-              title={`${user.username}'s posts...`}
-              showTitle={false}
-              showUsername={false}
-            />
+            <PostForm />
           )}
         </div>
         <div
           className="post-list-container"
           style={{ border: '1px dotted #1a1a1a' }}
         >
-          <PostForm />
+          <PostList
+              posts={user.posts}
+              title={`${user.username}'s posts...`}
+              showTitle={false}
+              showUsername={false}
+            />
+          
         </div>
       </div>
     );
