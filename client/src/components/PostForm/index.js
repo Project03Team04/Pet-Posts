@@ -105,7 +105,7 @@ const  PostForm = () =>{
   };
 
   return (
-    <div>
+    <div className="post-form" >
       <h3>What's on your pet mind?</h3>
 
       {Auth.loggedIn() ? (
@@ -118,7 +118,7 @@ const  PostForm = () =>{
             Character Count: {characterCount}/280
           </p>
 
-          <form className="post-form" onSubmit={handleFormSubmit}>
+          <form  onSubmit={handleFormSubmit}>
             <div className="post-form-body">
              
               <textarea
