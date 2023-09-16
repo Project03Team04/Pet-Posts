@@ -87,7 +87,9 @@ const Me = () => {
       </h2>
       {Auth.loggedIn() && (
           <div className="">
+
             <button onClick={toggleEditMode} className="btn-save m-1"><HiIcons.HiMiniPencil className='mx-1' /> 
+
               Edit Profile
             </button>
           </div>
