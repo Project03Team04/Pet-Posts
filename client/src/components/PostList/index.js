@@ -40,11 +40,11 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
       {posts &&
         posts.map((post) => (
           <div key={post._id} className="post-card ">
-            <h4 className="post-header">
+            <h4 className="post-header p-1">
               {showUsername ? (
-                <Link className="text-gray" to={`/profiles/${post.postAuthor}`}>
+                <Link  to={`/profiles/${post.postAuthor}`}>
                   {post.postAuthor}
-                  <span className="post-date">{post.createdAt}</span>
+                  <span style={{ fontSize: '0.825rem' }}className="post-date">{post.createdAt}</span>
                 </Link>
               ) : (
                 <>

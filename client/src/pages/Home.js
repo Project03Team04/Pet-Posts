@@ -15,7 +15,7 @@ const Home = () => {
   const {theme}=useTheme();
 
   return (
-    <main>
+    <main className='container'>
       <div className="flex-column justify-center">
         <div
           className="post-form-container"

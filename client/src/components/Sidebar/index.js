@@ -41,7 +41,7 @@ const Sidebar = () => {
             </li>
             {Auth.loggedIn() ? (
               <>
-                <li className="greetings text-grey m-2">
+                <li className="greetings  m-2">
                   <h3>Welcome, {Auth.getProfile().data.username} </h3>
                 </li>
                 {SidebarData.map((item, index) => {

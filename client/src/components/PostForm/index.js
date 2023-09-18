@@ -111,9 +111,9 @@ const  PostForm = () =>{
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`text-gray ${
+            className={`text-grey ${
               characterCount === 280 || error ? "text-danger" : ""
-            }`}
+            }` } style={{ fontSize: '0.825rem' }}
           >
             Character Count: {characterCount}/280
           </p>
@@ -135,10 +135,12 @@ const  PostForm = () =>{
               id="postImage"
               ref={fileSelectorRef}
               onChange={handleImageSelect}
+              className="p-2"
             ></input>
-            <div>
+            <div className="p-2">
               Youtube URL:
-              <input id="postVideo" type="url" onChange={handleVideo}></input>
+              <input id="postVideo" type="url" onChange={handleVideo}
+               className="mx-1"></input>
             </div>
             <div className="post-form-footer display-flex justify-center ">
               <button
