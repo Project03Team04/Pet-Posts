@@ -8,6 +8,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTheme } from "./utils/ThemeContext";
+import {motion} from 'framer-motion';
 import ThemeProvider from "./utils/ThemeContext";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
@@ -49,9 +50,9 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <ThemeProvider>
-          <div className="flex-column justify-flex-start main-body">
+          <div className=" bg-primary-custom w-100">
             <Header />
-            <div className="container">
+            <div className="bg-primary-custom" >
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

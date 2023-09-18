@@ -12,13 +12,15 @@ export default function ThemeProvider({ children }) {
   // Creating our state
 
  
-   const [theme, setTheme] = useState('light');
-   const storedTheme=JSON.parse(localStorage.getItem("theme"));
+  
+   var startTheme = JSON.parse(localStorage.getItem('theme')) ? JSON.parse(localStorage.getItem('theme')) : "light";
 
-    useState(storedTheme);
+const [theme, setTheme] = useState(startTheme);
+  //  const storedTheme=JSON.parse(localStorage.getItem("theme"));
+
+  //   useState(storedTheme);
   
    
-  
   
 
   // Method to update our state
@@ -32,8 +34,7 @@ export default function ThemeProvider({ children }) {
         return setTheme("dark");
       case "halloween":
         return setTheme("halloween");
-      default:
-        return setTheme("light");
+     
     }
   };
   localStorage.setItem("theme", JSON.stringify(theme));
