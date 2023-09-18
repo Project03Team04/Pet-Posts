@@ -404,7 +404,7 @@ body {
   
   
 }
-main
+
 .bg-primary-custom{
   background-color: var(--primary-background-color);
 }
@@ -620,6 +620,14 @@ li{
 .m-2{
   margin: 0.5em;
 }
+/* h1, h2,...*/
+h3{
+  font-size: 1em;;
+}
+
+
+
+
 
  /*buttons universal styles*/
  .btn-thin {
@@ -775,7 +783,7 @@ textarea#bio{
 /*   POST */
 .post-card{
  
-  margin: 1rem  0.5rem;
+  margin-top:0.5em;
   border-bottom: 1rem solid var(--secondary-light-color);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -823,11 +831,19 @@ h4.post-header a{
   border-right: 0.1rem solid var(--primary-light-color);
   border-left: 0.1rem solid var(--primary-light-color);
 }
-.post-form-body{
- 
-
-
+.post-form h3{
+  font-size: 1.5em;
+  margin-left: 1em;
+} 
+.post-form p{
+  margin-left: 1.5em;
+  margin-bottom: 0;
 }
+textarea{
+  background-color: var(--primary-background-color);
+}
+
+
 .post-form-footer{
   height: 3rem;
   border-top:  0.2rem solid var(--primary-light-color)2;
@@ -880,7 +896,8 @@ ul.list-style-none{
 
 @media screen and (max-width: 640px) {
   .container{
-    width:100%
+    width:100%;
+    margin: 0.1em;
   }
 
   
@@ -893,17 +910,17 @@ ul.list-style-none{
     max-height: 7%;
     
   }
-  select option{
-    font-size: 0.2em;
-    padding:0.1em;
-  }
+  
   footer h6.attribute a{
     font-size: 0.3em;
     color: var(--primary-light-color);
     text-decoration: none;
     margin-left: 1em;
   }
-
+  footer h6{
+    font-size: 0.7em;
+    justify-self: flex-end;
+  }
   .copyright{
     display: flex;
     flex-direction: column;
@@ -938,7 +955,18 @@ ul.list-style-none{
  header p{
     visibility: hidden;  
   }
-
+  .navbar{
+ 
+    height: 50px;
+    display: flex;
+   justify-content: flex-start;
+   align-items: center;
+  }
+  .menu-bars {
+    margin-left: 0.7rem;
+    font-size: 1.2rem;
+    background: none;
+  }
   .title-img{
       width: 5rem;
       height: 5rem;
@@ -1049,6 +1077,19 @@ textarea#bio{
   padding:1rem;
   width: 100%;
 }
+
+/*  POST-FORM*/
+.post-form{
+  margin: 0;
+
+}
+p{
+  margin: 0;
+  margin-bottom: 0;
+
+}
+
+
   .col-sm-auto {
     flex-grow: 1;
     flex-basis: 0;
