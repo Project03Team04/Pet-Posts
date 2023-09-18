@@ -60,14 +60,14 @@ const CommentForm = ({ postId }) => {
                 name="commentText"
                 placeholder="Add your comment..."
                 value={commentText}
-                className="form-input w-100"
+                className="comment-input"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn-like py-3" type="submit">
+              <button className="btn-like btn-hover py-3" type="submit">
                 Add 
               </button>
             </div>
