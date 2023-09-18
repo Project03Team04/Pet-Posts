@@ -49,9 +49,9 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <ThemeProvider>
-          <div className="flex-column justify-flex-start main-body">
+          <div className=" bg-primary-custom w-100">
             <Header />
-            <div className="container">
+            <div  >
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

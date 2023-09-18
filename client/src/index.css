@@ -361,7 +361,7 @@ END NORMALIZE CSS
     --primary-light-color: #ba40cd ;
     --secondary-color:  #eab190;
     --secondary-light-color:#f9934a ;
-    --primary-background-color:rgba(9, 255, 0, 0.085);
+    --primary-background-color:rgba(195, 243, 193, 0.92);
     --hover-color: rgb(61, 241, 61);
 }
 .dark{
@@ -392,33 +392,33 @@ END NORMALIZE CSS
 #root{
   background-color: var(--primary-background-color);
   min-height: 100%;
+  min-width: 100%;
 }
 
-.home, .profile, .friends {
-  display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-}
+
 
 html,
 body {
   min-height: 100%;
- 
+  min-width: 100%;
+  
   
 }
-.container{
-  width: 40%;
-  justify-content: center;
-  margin-left: 0;
-  padding-left: 10%;
-  
+main
+.bg-primary-custom{
+  background-color: var(--primary-background-color);
 }
 
 .main-body{
   background-color: var(--primary-background-color);
   min-width: 100%;
+  height: max-content ;
+}
+.container{
+  width: 50%;
+  background-color: var(--primary-background-color);
+  min-height: 80%;
+  
 }
 header{
   display: flex;
@@ -432,7 +432,16 @@ header{
 }
 footer{
   background-color: var(--primary-background-color);
+  position: fixed;
+  left:0;
+  bottom: 0;
+  right: 0;
+  max-height: 12%;
   
+}
+select{
+  background-color: var(--primary-background-color);
+  color: var(--primary-color)
 }
 footer h6.attribute a{
   font-size: 0.5em;
@@ -549,6 +558,7 @@ transition: 350ms;
 
 .nav-menu-items {
   width: 100%;
+  list-style: none;
   
 }
 .navbar-toggle{
@@ -782,7 +792,11 @@ textarea#bio{
 
 }
 
-
+h4.post-header a{
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-size: 1em;
+}
 
 .post-body{
   min-height: 5rem;
@@ -844,6 +858,18 @@ ul.list-style-none{
   padding:1rem;
   width: 60%;
 }
+
+/* COMMENT-FORM*/
+.comment-form{
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  border: 1px solid var(--secondary-light-color);
+  border-radius: 10px;
+}
+
+
+
 /*   IMAGES*/
 /*   random header image near website title*/
 .title-img{
@@ -853,9 +879,26 @@ ul.list-style-none{
 
 
 @media screen and (max-width: 640px) {
+  .container{
+    width:100%
+  }
 
+  
+  footer{
+    background-color: var(--primary-background-color);
+    position: fixed;
+    left:0;
+    bottom: 0;
+    right: 0;
+    max-height: 7%;
+    
+  }
+  select option{
+    font-size: 0.2em;
+    padding:0.1em;
+  }
   footer h6.attribute a{
-    font-size: 0.5em;
+    font-size: 0.3em;
     color: var(--primary-light-color);
     text-decoration: none;
     margin-left: 1em;
@@ -871,21 +914,21 @@ ul.list-style-none{
   header{
     height: 6em;
     
-}
-header .title {
+  }
+  header .title {
     text-decoration: none;
     width:6rem;
     
-}
-header h1.title-sm{
-font-family: 'Baloo Da 2', cursive;
-color:var(--primary-color);
-font-size: 2.5em;
-visibility: visible;
-margin-top: 0;
-margin-bottom: 1em;
-}
-header h1.title-lg {
+  }
+  header h1.title-sm{
+  font-family: 'Baloo Da 2', cursive;
+  color:var(--primary-color);
+  font-size: 2.5em;
+  visibility: visible;
+  margin-top: 0;
+   margin-bottom: 1em;
+      }
+  header h1.title-lg {
   height: 0;
    visibility: hidden;
    z-index:0;
@@ -894,43 +937,62 @@ header h1.title-lg {
 
  header p{
     visibility: hidden;  
-}
-
-.title-img{
-    width: 5rem;
-    height: 5rem;
-    margin-left: -3rem;
-    margin-top: 1.5rem;
-    z-index: 10;
   }
-.btn-sidebar{
-width: 60%;
-height: 10%;
-background-color: white;
-padding: 0.5em 1em;
-visibility: visible;
-border: 1px solid black;
-border-radius: 0.5em;
-margin:1em;
-text-decoration: none;
-color: black;
-font-family:'Baloo Da 2', cursive ;
-margin-left: 2.5em;
-}
-.btn-sidebar:hover {
-background-color:  var(--primary-light-color);
-}
 
-  .container{
-    width: 95%;
-    justify-content: center;
-    margin-left: 2%;
+  .title-img{
+      width: 5rem;
+      height: 5rem;
+      margin-left: -3rem;
+      margin-top: 1.5rem;
+      z-index: 10;
   }
+  .btn-sidebar{
+  width: 60%;
+  height: 10%;
+  background-color: white;
+  padding: 0.5em 1em;
+  visibility: visible;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  margin:1em;
+  text-decoration: none;
+  color: black;
+  font-family:'Baloo Da 2', cursive ;
+  margin-left: 2.5em;
+  }
+  .btn-sidebar:hover {
+  background-color:  var(--primary-light-color);
+  }
+  .btn-like{
+    
+    padding: 0.3em 1em;
+    border: 1px solid var(--secondary-light-color);
+    border-radius: 0.5em;
+    margin:0.25em;
+    text-decoration: none;
+    color: black;
+    font-family:'Baloo Da 2', cursive ;
+  }
+  .btn-comment{
+    
+    padding: 0.3em 1em;
+    border: 1px solid var(--secondary-light-color);
+    border-radius: 0.5em;
+    margin :0.25em;
+    text-decoration: none;
+    color: black;
+    font-family:'Baloo Da 2', cursive ;
+  }
+
+ 
   .btn-main{
     height: 0;
     width:0;
    visibility: hidden;
 
+}
+.btn-post{
+  margin-top: 0.25em;
 }
 
 .title-img{
@@ -938,6 +1000,54 @@ background-color:  var(--primary-light-color);
   height: 5rem;
   margin-left: -3rem;
   margin-top: 1.5rem;
+}
+/*PROFILE */
+.edit-profile{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  
+  border: 2px solid var(--secondary-light-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+form{
+  margin: 0.25em;
+}
+.h3{
+  margin-left: 0.5em;
+}
+label{
+  color:var(--secondary-color);
+  padding: ;
+}
+#bio{
+  width:100%;
+
+}
+textarea#bio{
+  padding: 0.5rem;
+  border: 1px solid var(--secondary-light-color);
+}
+.post-card {
+  width: 100%;
+  
+}
+.post-body{
+  padding:0.25rem;
+  font-size: small;
+  min-height: 3rem;;
+}
+.post-footer{
+  height: 2rem;
+  padding-top: 0.1rem;
+}
+.comment{
+  background-color: var(--primary-background-color);
+  border: 1px solid var(--secondary-light-color);
+  border-radius: 10px;
+  padding:1rem;
+  width: 100%;
 }
   .col-sm-auto {
     flex-grow: 1;

@@ -40,24 +40,22 @@ const CommentForm = ({ postId }) => {
   };
 
   return (
-    <div>
-      <h4>What can you say on this post?</h4>
-
-      {Auth.loggedIn() ? (
+    <div className='comment-form '>
+         {Auth.loggedIn() ? (
         <>
           <p
             className={`m-0 ${
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
-          >
+            style={{ fontSize: '0.5rem' }}>
             Character Count: {characterCount}/280
             {error && <span className="ml-2">{error.message}</span>}
           </p>
           <form
-            className="flex-column justify-center  align-center"
+            className="flex-row justify-between align-center"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
+            <div className="">
               <textarea
                 name="commentText"
                 placeholder="Add your comment..."
@@ -69,8 +67,8 @@ const CommentForm = ({ postId }) => {
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn-submit btn-primary btn-block py-3" type="submit">
-                Add Comment
+              <button className="btn-like py-3" type="submit">
+                Add 
               </button>
             </div>
           </form>

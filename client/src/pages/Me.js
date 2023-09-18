@@ -71,7 +71,7 @@ const Me = () => {
         </div>
         <div
           className="post-list-container"
-          style={{ border: '1px dotted #1a1a1a' }}
+         
         >
           <PostForm />
         </div>
@@ -81,7 +81,7 @@ const Me = () => {
 
  
   return (
-    <div>
+    <div className='container'>
       <h2 className="">
         Viewing {userParam ? `${user.username}'s` : 'your'} profile.
       </h2>
@@ -113,7 +113,7 @@ const Me = () => {
         </div>
         <div
           className="post-list-container"
-          style={{ border: '1px dotted #1a1a1a' }}
+        
         >
           <PostForm />
         </div>
