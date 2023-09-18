@@ -35,16 +35,16 @@ const Header = () => {
           {Auth.loggedIn() ? (
             <>
              
-              <button className="btn-main btn-block " onClick={logout}>
+              <button className="btn-main btn-block btn-hover " onClick={logout}>
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link className="btn-block btn-main" to="/login">
+              <Link className="btn-block btn-main btn-hover " to="/login">
                 Login
               </Link>
-              <Link className="btn-block btn-main " to="/signup">
+              <Link className="btn-block btn-main btn-hover " to="/signup">
                 Signup
               </Link>
             </>

@@ -1,18 +1,17 @@
 // import React from 'react';
-import React, { useState } from 'react';
-// import API function 
-// import {likeOrUnlikePost} from '../components/api'; 
+import React, { useState } from "react";
+// import API function
+// import {likeOrUnlikePost} from '../components/api';
 
 // Import the `useParams()` hook
-import { useParams } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client'; 
+import { useParams } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
 
-
-import CommentList from '../components/CommentList';
-import CommentForm from '../components/CommentForm';
+import CommentList from "../components/CommentList";
+import CommentForm from "../components/CommentForm";
 
 // import {LIKE_POST} from '../utils/mutations';
-import { QUERY_SINGLE_POST } from '../utils/queries';
+import { QUERY_SINGLE_POST } from "../utils/queries";
 
 const SinglePost = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
@@ -50,60 +49,34 @@ const SinglePost = () => {
   }
 
   const imageContainerStyle = {
-    display: 'flex',
-    justifyContent: 'flex-start'
-  }
+    display: "flex",
+    justifyContent: "flex-start",
+  };
   const imageStyle = {
     maxHeight: 200,
     maxWidth: 200,
-  }
-
+  };
 
   return (
     <div className="container ">
-      <div className='post-card'>
+      <div className="post-card">
         <h3 className="post-header">
-        {post.postAuthor} <br />
-        <span style={{ fontSize: '0.8rem' }}>
-          on {post.createdAt}
-        </span>
-      </h3>
-      <div style={imageContainerStyle} className="post-body">
-        <img style={imageStyle} src={post.postImage}></img>
-        <blockquote
-          className="p-1"
-          style={{
-            fontSize: '1.5rem',
-            lineHeight: '1.5',
-          }}
-        >
-          {post.postText}
-        </blockquote>
+          {post.postAuthor} <br />
+          <span style={{ fontSize: "0.8rem" }}>on {post.createdAt}</span>
+        </h3>
+        <div style={imageContainerStyle} className="post-body">
+          <img style={imageStyle} src={post.postImage}></img>
+          <blockquote className="p-1">{post.postText}</blockquote>
+        </div>
       </div>
-      </div>
-      
 
       <div className="my-5">
         <CommentList comments={post.comments} />
       </div>
-      <div className="" >
+      <div className="">
         <CommentForm postId={post._id} />
-        <div>
-        {/* <button
-          style={{
-            backgroundColor: post.likes > 0 ? '#ff0000' : '#007bff', // Change colors as needed
-            color: '#fff', // Change text color as needed
-            border: 'none',
-            padding: '10px 20px', // Adjust padding as needed
-            cursor: 'pointer',}}
-            onClick={handleLike}>
-           {post.likes > 0 ? 'Unlike' : 'Like'}
-        </button> */}
-        {/* NO NEED FOR LIKE BUTTON IN SINGLE POST PAGE */}
-        <span>{post.likes}</span>
+        
       </div>
-      </div>
-
     </div>
   );
 };
