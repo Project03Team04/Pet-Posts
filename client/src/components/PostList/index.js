@@ -35,7 +35,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   }
 
   return (
-    <div>
+    <div className="post-list">
       {showTitle && <h3>{title}</h3>}
       {posts &&
         posts.map((post) => (

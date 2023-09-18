@@ -106,7 +106,7 @@ const  PostForm = () =>{
 
   return (
     <div className="post-form" >
-      <h3>What's on your pet mind?</h3>
+      <h3 >What's on your pet mind?</h3>
 
       {Auth.loggedIn() ? (
         <>

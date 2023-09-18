@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
-
+import {motion} from 'framer-motion';
 import Auth from "../../utils/auth";
 import Sidebar from "../Sidebar";
 import HeaderImage from "../HeaderImage";
@@ -9,7 +9,9 @@ const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    
   };
+  const [move,setMove]=useState(false);
   return (
     <header>
       <Sidebar />
@@ -22,9 +24,11 @@ const Header = () => {
             </Link>
             <p className="">where pets can post </p>
           </div>
-          <div>
+          <motion.div animate={{ scale:[0.5,1,0.5,1]}} initial={{scale:0}}
+        transition={{ duration:1}}
+        onClick={() => setMove(!move)}>
             <HeaderImage />
-          </div>
+          </motion.div>
         </div>
 
         <div>
