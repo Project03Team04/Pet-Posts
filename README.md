@@ -32,7 +32,7 @@
   - GraphQL
   - AWS S3 Bucket
   ## Resources
-  Deployed web application on GitHub Pages:
+  Deployed web application on Heroku:
  https://pure-bastion-75691-8de8d2af8e5c.herokuapp.com/
   
  
