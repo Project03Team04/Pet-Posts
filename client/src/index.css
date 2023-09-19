@@ -901,7 +901,18 @@ textarea.comment-input{
   height: 10rem;
 }
 
-
+div.about{
+  width:100%;
+  display: flex;
+ flex-wrap: wrap;
+ flex-direction: row;
+ justify-content: center ;
+ margin: 0;
+ padding: 0;
+}
+.card{
+  margin: 10em;
+}
 @media screen and (max-width: 640px) {
   .container{
     width:100%;
@@ -1121,7 +1132,12 @@ textarea.comment-input{
   font-size: 1em;
   padding: 0.5em
 }
-
+.container.about{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 2rem;
+}
   .col-sm-auto {
     flex-grow: 1;
     flex-basis: 0;
@@ -1212,5 +1228,10 @@ textarea.comment-input{
   }
   .align-content-center-sm {
     align-content: center;
+  }
+}
+@media screen and (max-width: 640px) {
+  .container.about{
+    
   }
 }
